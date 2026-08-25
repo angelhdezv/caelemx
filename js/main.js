@@ -1,38 +1,15 @@
 'use strict';
 
-/**
- * Cáele.mx
- *
- * Client-side enhancements only.
- * Core content and navigation must continue working
- * when JavaScript is unavailable.
- */
+const yearElement = document.querySelector('[data-current-year]');
+const headerElement = document.querySelector('[data-site-header]');
 
-const selectors = {
-    currentYear: '[data-current-year]',
+if (yearElement) {
+    yearElement.textContent = String(new Date().getFullYear());
+}
+
+const updateHeader = () => {
+    headerElement?.classList.toggle('is-scrolled', window.scrollY > 12);
 };
 
-/**
- * Updates copyright year without making the footer
- * dependent on JavaScript.
- */
-const updateCurrentYear = () => {
-    const yearElement = document.querySelector(selectors.currentYear);
-
-    if (!yearElement) {
-        return;
-    }
-
-    yearElement.textContent = String(
-        new Date().getFullYear(),
-    );
-};
-
-/**
- * Application entry point.
- */
-const init = () => {
-    updateCurrentYear();
-};
-
-init();
+updateHeader();
+window.addEventListener('scroll', updateHeader, { passive: true });
