@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Cáele.mx | Invitaciones digitales personalizadas</title>
-    <meta name="description" content="Invitaciones digitales con tu historia, tu estilo y todos los detalles que hacen único tu evento.">
+    <title>Invitaciones digitales personalizadas para fiestas | Cáele.mx</title>
+    <meta name="description" content="Creamos invitaciones digitales personalizadas para fiestas y eventos, listas para compartir y diseñadas con tu historia, tu estilo y tus detalles.">
     <meta name="theme-color" content="#fffaf7">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://caele.mx/">
@@ -13,12 +13,14 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_MX">
     <meta property="og:site_name" content="Cáele.mx">
-    <meta property="og:title" content="La fiesta empieza desde la invitación | Cáele.mx">
-    <meta property="og:description" content="Diseñamos invitaciones digitales con tu historia, tu estilo y todos tus detalles.">
+    <meta property="og:title" content="Invitaciones digitales personalizadas | Cáele.mx">
+    <meta property="og:description" content="Invitaciones digitales para fiestas y eventos, listas para compartir y diseñadas con tu historia, tu estilo y tus detalles.">
     <meta property="og:url" content="https://caele.mx/">
     <meta name="twitter:card" content="summary">
 
-    <link rel="icon" type="image/svg+xml" sizes="any" href="./assets/favicon.svg?v=2">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&amp;display=swap" rel="stylesheet">
@@ -28,13 +30,44 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Cáele.mx",
-        "url": "https://caele.mx/",
-        "email": "contacto@caele.mx",
-        "sameAs": [
-            "https://www.instagram.com/caele.mx_of",
-            "https://www.facebook.com/caele.mxof"
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://caele.mx/#organization",
+                "name": "Cáele.mx",
+                "url": "https://caele.mx/",
+                "logo": "https://caele.mx/favicon.svg",
+                "email": "contacto@caele.mx",
+                "sameAs": [
+                    "https://www.instagram.com/caele.mx_of",
+                    "https://www.facebook.com/caele.mxof"
+                ]
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://caele.mx/#website",
+                "url": "https://caele.mx/",
+                "name": "Cáele.mx",
+                "inLanguage": "es-MX",
+                "publisher": {
+                    "@id": "https://caele.mx/#organization"
+                }
+            },
+            {
+                "@type": "Service",
+                "@id": "https://caele.mx/#invitaciones-digitales",
+                "name": "Invitaciones digitales personalizadas",
+                "serviceType": "Diseño de invitaciones digitales",
+                "description": "Invitaciones digitales personalizadas para fiestas y eventos, listas para compartir desde el celular.",
+                "url": "https://caele.mx/#invitaciones",
+                "areaServed": {
+                    "@type": "Country",
+                    "name": "México"
+                },
+                "provider": {
+                    "@id": "https://caele.mx/#organization"
+                }
+            }
         ]
     }
     </script>
@@ -78,7 +111,7 @@
                     <p class="eyebrow">Invitaciones digitales personalizadas</p>
                     <h1 id="hero-title">La fiesta empieza<br>desde la invitación.</h1>
                     <p class="hero__description">
-                        Diseñamos experiencias digitales con tu historia, tu estilo y todos los detalles que hacen único tu evento.
+                        Diseñamos invitaciones digitales con tu historia, tu estilo y todos los detalles que hacen único tu evento.
                     </p>
 
                     <div class="hero-social" aria-label="Encuéntranos en redes sociales">
