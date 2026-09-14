@@ -9,3 +9,49 @@
 .demo-brand{flex-shrink:0}.demo-brand img{width:140px;height:48px;object-fit:contain}.demo-breadcrumbs{display:flex;gap:12px;align-items:center;font-weight:700;font-size:.8rem}.demo-breadcrumbs [aria-current]{color:#aa3156}.demo-breadcrumbs a:hover{color:#09827f}.demo-choose{background:#0a2448;color:white;border-radius:999px;padding:12px 22px;min-height:44px;font-size:.78rem;font-weight:800;white-space:nowrap}.demo-choose:hover{background:#153b69}.demo-switcher{display:flex;justify-content:space-between;gap:15px;max-width:1200px;margin:auto;padding:18px 24px;font:700 .8rem/1.5 "Nunito Sans",sans-serif;color:#40506a}.demo-switcher a{text-decoration:none}.demo-switcher span a{color:#a22e58;text-decoration:underline;text-underline-offset:4px}
 html{scroll-padding-top:110px}.minimalist .invitation{max-width:900px;box-shadow:0 20px 70px #51482b0b;margin-top:35px}.minimalist .cover{padding-block:80px 100px}.minimalist .cover h1{max-width:660px;margin:0 auto 25px;font-size:clamp(4rem,8vw,7rem)}.minimalist .cover .quote{color:#796e60}.minimalist .section{padding-inline:10%}.minimalist .rings{font-size:110px;margin-bottom:48px}.minimalist .gallery{margin-inline:-5%;gap:16px}.minimalist .gallery img:nth-child(2){margin-top:28px}.minimalist #nosotros{padding-bottom:85px}.minimalist .venue-grid>img{aspect-ratio:16/9}.minimalist .button{padding-inline:30px}.minimalist .brand-footer{border-top:1px solid #d9d4c9}.editorial .cover{min-height:800px}.editorial .cover h1{max-width:650px;letter-spacing:-.045em}.editorial .cover .quote{font-size:1.8rem;margin-top:20px}.editorial #cuenta-regresiva{padding-block:35px}.editorial #nosotros{padding:70px 5%}.editorial #nosotros>.eyebrow{font-size:4.5rem;margin-bottom:0}.editorial #nosotros>.quote{max-width:250px;margin-left:auto;margin-top:-55px;margin-bottom:45px}.editorial .gallery img{aspect-ratio:3/4}.editorial .gallery img:nth-child(2){margin-top:30px}.editorial #lugar>.eyebrow{padding-bottom:10px}.editorial .venue-grid>div{text-align:left;padding:55px}.editorial #vestimenta{display:grid;grid-template-columns:1fr 1fr;text-align:left;align-items:center;column-gap:40px;padding:70px 9%}.editorial #vestimenta>.eyebrow{grid-column:1/-1}.editorial #vestimenta h3{font-size:4rem}.editorial #vestimenta .attire{grid-column:2;grid-row:2/5;width:230px;height:150px}.editorial #vestimenta .guidelines{justify-content:flex-start;display:block}.editorial #vestimenta .guidelines li{margin-bottom:8px}.editorial #regalos{padding-block:70px;background:radial-gradient(ellipse at top right,#f8efe6,#ead4c6)}.editorial #rsvp>.eyebrow{font-family:var(--serif);font-size:3rem;letter-spacing:0;text-transform:none}.editorial #rsvp{padding-block:70px}
 @media(max-width:700px){.demo-bar{flex-wrap:wrap;gap:8px 12px;padding:10px 16px}.demo-brand img{width:105px;height:36px}.demo-breadcrumbs{order:3;width:100%;justify-content:center;font-size:.7rem;gap:9px}.demo-choose{margin-left:auto;font-size:.68rem;padding:10px 14px}.demo-switcher{padding:14px 18px;font-size:.7rem;flex-wrap:wrap}.minimalist .cover{padding:50px 5% 65px}.minimalist .cover h1{font-size:3.8rem}.minimalist .section{padding-inline:7%}.minimalist .gallery{gap:7px}.minimalist .gallery img:nth-child(2){margin-top:15px}.editorial .cover{min-height:660px}.editorial #nosotros>.eyebrow{font-size:3.5rem}.editorial #nosotros>.quote{margin:12px 0 25px;max-width:none}.editorial .venue-grid>div{padding:35px 25px}.editorial #vestimenta{column-gap:15px;padding:45px 7%}.editorial #vestimenta .attire{width:130px;max-width:100%}.editorial #vestimenta h3{font-size:3rem}.editorial #vestimenta .quote{grid-column:1/-1}.editorial #rsvp>.eyebrow{font-size:2.4rem}}
+
+/* Compact brand signature: secondary to the couple's invitation. */
+.brand-footer{
+ display:flex;
+ flex-wrap:wrap;
+ justify-content:center;
+ align-items:center;
+ gap:10px 20px;
+ padding:22px 24px;
+ text-align:center;
+ border-top:1px solid #d9d4c9;
+}
+.brand-footer>.eyebrow{
+ margin:0;
+ font-size:.56rem;
+ letter-spacing:.18em;
+}
+.brand-footer hr{display:none}
+.brand-footer .footer-logo{
+ flex:0 0 110px;
+ width:110px;
+ max-width:110px;
+ margin:0;
+}
+.brand-footer .footer-logo img{
+ width:110px;
+ height:40px;
+ max-height:40px;
+ object-fit:contain;
+ object-position:center;
+}
+.brand-footer>p:not(.eyebrow){
+ margin:0;
+ font-size:.75rem;
+ line-height:1.5;
+}
+.brand-footer small{
+ font-size:.65rem;
+ line-height:1.5;
+ color:#746d62;
+}
+@media(max-width:600px){
+ .brand-footer{gap:8px 12px;padding:18px 20px}
+ .brand-footer>p:not(.eyebrow){flex-basis:100%;font-size:.7rem}
+ .brand-footer small{flex-basis:100%}
+}
