@@ -83,6 +83,10 @@ try {
   } catch(error) { status.textContent = error.message; button.disabled = false; }
  });
  root.append(rsvp);
+ if (editorial) {
+  const { enhanceEditorial } = await import("./editorial.js");
+  enhanceEditorial(root, data);
+ }
  const footer = document.querySelector("#brand-footer");
  const logo = photo({src:data.branding.logo,alt:data.branding.name}); const home = link("",data.branding.url,"footer-logo"); home.append(logo);
  footer.append(el("p","Developed by","eyebrow"),el("hr"),home,el("p",data.branding.tagline),el("small","© " + new Date().getFullYear() + " " + data.branding.name));

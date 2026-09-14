@@ -87,5 +87,20 @@ export const weddingData = {
     "deadlineAt": "2027-10-17T23:00:00Z",
     "mode": "demo"
   },
-  "schemaVersion": 1
+  "schemaVersion": 1,
+  "presentation": {
+    "editorial": {
+      "galleryTitle": "Así se siente encontrarnos",
+      "galleryNote": "La vida es más linda cuando la vivimos juntos.",
+      "photoNotes": [
+        "Tú, yo",
+        "y todo lo que viene",
+        "Siempre de tu mano"
+      ],
+      "coverNote": "Aquí comienza nuestro para siempre.",
+      "dressHeading": "Una noche para celebrar",
+      "giftsHeading": "El mejor regalo es tenerte cerca.",
+      "rsvpNote": "Hay un lugar para ti en nuestra historia."
+    }
+  }
 };
