@@ -31,16 +31,17 @@
 .editorial #nosotros{padding:60px 5% 80px;min-height:570px;position:relative}
 .editorial #nosotros>h2{position:absolute;left:5%;top:70px;max-width:30%;font-size:3.6rem;line-height:.95;text-transform:none;letter-spacing:-.04em;font-family:var(--serif);font-style:italic}
 .editorial #nosotros>.quote{position:absolute;left:5%;top:220px;max-width:25%;margin:0;font:400 .62rem/1.9 Jost,sans-serif;letter-spacing:.2em;text-transform:uppercase}
-.editorial .gallery{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;padding-left:34%;margin:0;position:relative;align-items:start}
-.editorial .memory{margin:0;position:relative;min-width:0}
-.editorial .memory img{width:100%;height:100%;aspect-ratio:3/4;object-fit:cover;filter:sepia(.12) saturate(.85)}
+.editorial .gallery{display:grid;grid-template-columns:1.2fr 1fr;gap:32px 24px;padding-left:34%;margin:0;position:relative;align-items:start}
+.editorial .memory{margin:0;position:relative;min-width:0;padding:10px 10px 0;background:#fff9ed;box-shadow:0 8px 18px #4f2c2633}
+.editorial .memory img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;filter:sepia(.12) saturate(.85)}
 .editorial .gallery img:nth-child(2){margin:0}
 .editorial .memory-1{transform:rotate(-3deg);margin-top:0}
 .editorial .memory-2{transform:rotate(3deg);margin-top:18px}
-.editorial .memory-3{position:absolute;width:28%;left:49%;top:65%;padding:8px 8px 0;background:#fff9ed;box-shadow:0 8px 18px #4f2c2633;transform:rotate(-8deg);z-index:2}
+/* Keep every caption in flow: the last memory must never cover the first two. */
+.editorial .memory-3{grid-column:1/-1;justify-self:center;width:64%;transform:rotate(-8deg);z-index:2}
 .editorial .memory-3 img{aspect-ratio:4/3}
-.editorial .memory figcaption{padding:12px 3px 0;font-size:1.7rem;white-space:normal}
-.editorial .memory-3 figcaption{padding:5px 0 9px;font-size:1.4rem}
+.editorial .memory figcaption{padding:12px 3px 16px;font-size:1.7rem;line-height:1.15;white-space:normal;overflow-wrap:anywhere;color:var(--ink)}
+.editorial .memory-3 figcaption{font-size:1.4rem}
 .editorial #nosotros>.editorial-flourish{position:absolute;left:9%;bottom:85px;color:#8d5646;transform:rotate(12deg)}
 .editorial #lugar{background:#a3684f}
 .editorial .venue-grid{position:relative;display:block;background:transparent;min-height:450px;isolation:isolate;overflow:hidden}
@@ -100,8 +101,9 @@
  .editorial #nosotros{padding:40px 6% 90px;min-height:0}
  .editorial #nosotros>h2{position:static;max-width:85%;font-size:2.9rem;margin:0 0 20px}
  .editorial #nosotros>.quote{position:static;max-width:90%;margin:0 0 25px;font-size:.57rem}
- .editorial .gallery{padding:0;gap:16px;margin-bottom:50px}
- .editorial .memory-3{width:44%;left:30%;top:65%}
+ .editorial .gallery{padding:0;gap:28px 16px;margin-bottom:20px}
+ .editorial .memory{padding:8px 8px 0}
+ .editorial .memory-3{width:64%}
  .editorial .memory figcaption{font-size:1.25rem}.editorial .memory-3 figcaption{font-size:1.15rem}
  .editorial #nosotros>.editorial-flourish{bottom:5px;left:4%;width:150px}
  .editorial .venue-grid{min-height:570px;padding-top:240px}
