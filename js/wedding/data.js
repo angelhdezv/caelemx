@@ -1,0 +1,91 @@
+export const weddingData = {
+  "branding": {
+    "favicon": "/favicon.svg",
+    "logo": "/assets/branding/logo.svg",
+    "name": "Cáele.mx",
+    "tagline": "Invitaciones digitales para momentos especiales.",
+    "url": "/"
+  },
+  "dressCode": {
+    "guidelines": [
+      "Vestido largo o midi",
+      "Traje oscuro"
+    ],
+    "note": "Reservemos el blanco para la novia.",
+    "title": "Formal",
+    "illustration": {
+      "src": "/assets/wedding/attire.svg",
+      "alt": "Ilustración de vestido y traje formal"
+    }
+  },
+  "event": {
+    "couple": [
+      {
+        "name": "Sofía"
+      },
+      {
+        "name": "Mateo"
+      }
+    ],
+    "headline": "Nos casamos",
+    "quote": "Contigo, todos los días.",
+    "startsAt": "2027-10-24T23:00:00Z",
+    "timeZone": "America/Mexico_City",
+    "type": "wedding",
+    "venue": {
+      "address": "San Miguel de Allende, Guanajuato",
+      "image": {
+        "alt": "Decoración de una celebración de boda",
+        "src": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1400&q=85"
+      },
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=San+Miguel+de+Allende+Guanajuato",
+      "name": "Hacienda Los Olivos"
+    }
+  },
+  "gifts": {
+    "message": "Tu compañía es nuestro mejor regalo.",
+    "registries": [
+      {
+        "id": "liverpool",
+        "label": "Liverpool",
+        "url": "https://mesaderegalos.liverpool.com.mx/"
+      },
+      {
+        "id": "amazon",
+        "label": "Amazon",
+        "url": "https://www.amazon.com.mx/wedding"
+      }
+    ]
+  },
+  "id": "boda-demo",
+  "invitation": {
+    "id": "demo-family",
+    "maxPasses": 2
+  },
+  "locale": "es-MX",
+  "media": {
+    "cover": {
+      "alt": "Pareja celebrando su boda",
+      "src": "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85"
+    },
+    "gallery": [
+      {
+        "alt": "Un momento de la celebración",
+        "src": "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=85"
+      },
+      {
+        "alt": "Recuerdo de una boda",
+        "src": "https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=900&q=85"
+      },
+      {
+        "alt": "La pareja en su día especial",
+        "src": "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=85"
+      }
+    ]
+  },
+  "rsvp": {
+    "deadlineAt": "2027-10-17T23:00:00Z",
+    "mode": "demo"
+  },
+  "schemaVersion": 1
+};
