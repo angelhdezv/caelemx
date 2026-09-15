@@ -84,3 +84,17 @@
 @media(prefers-reduced-motion:reduce){.solsticio .sol-flower{animation:none;transform:none;will-change:auto}}
 @media print{.solsticio .sol-flower{animation:none;transform:none}}
 
+
+/* Fuller meadow arrangements, with their own space away from the content. */
+.solsticio .sol-flower--hero-bouquet{width:110px;height:175px;left:1%;top:155px;animation-delay:-.7s}
+.solsticio .sol-bouquet-border{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;height:155px;margin:0 8%;padding:10px 8px 15px;pointer-events:none}
+.solsticio .sol-bouquet-border .sol-flower{position:relative;inset:auto;flex:0 1 130px;width:130px;height:130px;min-width:0;transform-origin:50% 94%}
+.solsticio .sol-bouquet--left{animation-delay:-.5s}
+.solsticio .sol-bouquet-border .sol-bouquet--center{flex-basis:45px;width:45px;height:95px;animation-delay:-1.6s}
+.solsticio .sol-bouquet--right{animation-delay:-2.2s}
+@media(max-width:600px){
+ .solsticio .sol-flower--hero-bouquet{width:43px;height:100px;left:0;top:140px}
+ .solsticio .sol-bouquet-border{height:125px;margin:0 6%;gap:20px;padding:8px 4px 16px}
+ .solsticio .sol-bouquet-border .sol-flower{width:88px;flex-basis:88px;height:100px}
+ .solsticio .sol-bouquet-border .sol-bouquet--center{width:28px;flex-basis:28px;height:65px}
+}

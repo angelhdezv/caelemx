@@ -15,7 +15,7 @@ export function enhanceSolsticio(root, data) {
   line.textContent = (index ? "& " : "") + person.name; title.append(line);
  });
  title.after(hero.querySelector("time"));
- hero.append(art("blue-flower", "sol-flower sol-flower--hero"));
+ hero.append(art("blue-flower", "sol-flower sol-flower--hero"), art("bouquet-meadow", "sol-flower sol-flower--hero-bouquet"));
  const gallery = root.querySelector("#nosotros");
  gallery.querySelector("h2").textContent = copy.galleryTitle;
  gallery.querySelector(".quote").textContent = copy.galleryNote;
@@ -23,7 +23,16 @@ export function enhanceSolsticio(root, data) {
  venue.querySelector("h2").textContent = copy.venueTitle;
  venue.querySelector(".venue-grid>div").prepend(venue.querySelector("h2"));
  venue.querySelector(".button").textContent = copy.mapsLabel;
- venue.append(art("sprig", "sol-flower sol-flower--venue"));
+ venue.append(art("bouquet-blue", "sol-flower sol-flower--venue"));
  root.querySelector("#regalos").prepend(art("gift", "sol-gift"));
- root.querySelector("#rsvp").append(art("daisy", "sol-flower sol-flower--rsvp"));
+ root.querySelector("#rsvp").append(art("bouquet-meadow", "sol-flower sol-flower--rsvp"));
+ // Dedicated ornament rows reserve space for the stems and their moving edges.
+ for (const id of ["nosotros", "vestimenta"]) {
+  const border = document.createElement("div");
+  border.className = "sol-bouquet-border";
+  border.setAttribute("aria-hidden", "true");
+  border.append(art("bouquet-blue", "sol-flower sol-bouquet--left"), art("daisy", "sol-flower sol-bouquet--center"), art("bouquet-meadow", "sol-flower sol-bouquet--right"));
+  root.querySelector("#" + id).after(border);
+ }
+
 }
