@@ -10,7 +10,7 @@
 .solsticio .cover h1 span{display:block}
 .solsticio .cover time{font-size:.85rem;letter-spacing:.14em;margin:0 0 30px}
 .solsticio .cover .quote{font-size:1.3rem;margin:0 auto;max-width:460px}
-.solsticio .sol-flower{position:absolute;pointer-events:none;object-fit:contain;transform-origin:50% 97%;animation:sol-dance 6.7s ease-in-out infinite alternate;will-change:transform}
+.solsticio .sol-flower{position:absolute;pointer-events:none;object-fit:contain;transform-origin:50% 97%;animation:sol-dance 3s ease-in-out infinite;will-change:transform}
 .solsticio .sol-flower--hero{width:105px;height:265px;right:4%;top:115px;animation-delay:-2s}
 .solsticio #cuenta-regresiva{padding:35px 8% 55px}
 .solsticio #cuenta-regresiva h2{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
@@ -33,7 +33,7 @@
 .solsticio .venue-grid h2{margin-bottom:25px}
 .solsticio .venue-grid h3{font:400 1rem Jost,sans-serif;letter-spacing:.05em}
 .solsticio .venue-grid p{font-size:.85rem}
-.solsticio .sol-flower--venue{right:0;top:35px;width:65px;height:210px;animation-duration:8s;animation-delay:-4s}
+.solsticio .sol-flower--venue{right:0;top:35px;width:65px;height:210px;animation-delay:-4s}
 .solsticio .button{border-radius:999px;padding:10px 27px;min-height:44px;font-size:.8rem;text-transform:none;letter-spacing:.06em}
 .solsticio #vestimenta{display:grid;grid-template-columns:1.2fr 1fr;text-align:left;column-gap:25px}
 .solsticio #vestimenta h2{margin-bottom:18px}
@@ -58,11 +58,11 @@
 .solsticio .pass-value select{appearance:none;background:transparent;border:0;min-width:55px;padding:0 8px;font:400 2rem var(--serif);text-align:center}
 .solsticio .pass-value span{font-size:.5rem;letter-spacing:.12em}
 .solsticio .primary{background:var(--ink);color:var(--paper);font-size:.8rem;letter-spacing:.1em}
-.solsticio .sol-flower--rsvp{width:60px;height:160px;right:5%;top:65px;animation-duration:5.3s;animation-delay:-1s}
+.solsticio .sol-flower--rsvp{width:60px;height:160px;right:5%;top:65px;animation-delay:-1s}
 .solsticio .brand-footer{background:var(--paper);text-align:center;padding:20px}
 .solsticio .brand-footer .footer-logo{margin:12px auto}
 .solsticio .brand-footer .footer-logo img{object-position:center}
-@keyframes sol-dance{from{transform:rotate(-4deg) translateX(-2px)}to{transform:rotate(4deg) translateX(2px)}}
+@keyframes sol-dance{0%,100%{transform:rotate(-4deg) translateX(-2px)}50%{transform:rotate(4deg) translateX(2px)}}
 @media(max-width:600px){
  .solsticio .invitation{margin-top:0}.solsticio .section{padding:40px 7%}
  .solsticio .cover{padding:28px 12% 10px}.solsticio .cover h1{font-size:clamp(3.6rem,15vw,5.7rem)}
@@ -80,6 +80,7 @@
  .solsticio .sol-flower--rsvp{width:32px;height:90px;right:1%;top:100px}
  .solsticio .sol-flower{animation-name:sol-dance-small}
 }
-@keyframes sol-dance-small{from{transform:rotate(-3deg)}to{transform:rotate(3deg)}}
+@keyframes sol-dance-small{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
 @media(prefers-reduced-motion:reduce){.solsticio .sol-flower{animation:none;transform:none;will-change:auto}}
 @media print{.solsticio .sol-flower{animation:none;transform:none}}
+
