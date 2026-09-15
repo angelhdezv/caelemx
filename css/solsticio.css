@@ -90,11 +90,6 @@
 .solsticio .sol-confirmed .accepted p{font:400 .9rem/1.5 var(--serif)}
 @keyframes sol-bloom{from{transform:scale(.15) rotate(-35deg);opacity:0}to{transform:scale(1);opacity:1}}
 @keyframes sol-accepted{from{opacity:0;translate:0 8px}to{opacity:1;translate:0 0}}
-.solsticio .brand-footer{background:#faf2da;text-align:center;padding:15px 20px 24px}
-.solsticio .brand-footer .footer-logo{max-width:85px;margin:8px auto}
-.solsticio .brand-footer .footer-logo img{width:85px;height:30px;object-position:center}
-.solsticio .brand-footer hr{width:35px;margin:8px auto}
-.solsticio .brand-footer p,.solsticio .brand-footer small{font-size:.58rem;margin:6px 0}
 @media(min-width:700px){
  .solsticio .invitation-nav{padding:15px;gap:40px}
  .solsticio .cover{min-height:540px}

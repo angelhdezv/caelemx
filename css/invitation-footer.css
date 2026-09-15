@@ -1,0 +1,28 @@
+/* Shared brand component. Theme styles do not determine its size or type. */
+.invitation-footer {
+ box-sizing: border-box;
+ display: flex;
+ flex-wrap: wrap;
+ align-items: center;
+ justify-content: center;
+ gap: 10px 24px;
+ margin: 0;
+ padding: 18px 20px;
+ border: 0;
+ border-top: 1px solid #ded6c8;
+ background: #f4eee3;
+ color: #544e46;
+ font: 400 12px/1.5 Jost, Arial, sans-serif;
+ text-align: center;
+}
+.invitation-footer__credit { display: flex; align-items: center; gap: 12px; }
+.invitation-footer__label { font-size: 9px; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; }
+.invitation-footer .invitation-footer__brand { display: block; flex: 0 0 110px; margin: 0; padding: 0; border: 0; text-decoration: none; }
+.invitation-footer .invitation-footer__logo { display: block; width: 110px; height: 40px; max-width: 110px; margin: 0; object-fit: contain; object-position: center; }
+.invitation-footer .invitation-footer__tagline { margin: 0 0 2px; font: inherit; }
+.invitation-footer__copyright { display: block; font-size: 10px; color: #746d62; }
+.invitation-footer a:focus-visible { outline: 2px solid #243649; outline-offset: 4px; }
+@media (max-width: 600px) {
+ .invitation-footer { gap: 6px; padding: 14px 18px; }
+ .invitation-footer__copy { flex-basis: 100%; font-size: 11px; }
+}

@@ -1,4 +1,4 @@
-export const weddingData = {
+{
   "branding": {
     "favicon": "/favicon.svg",
     "logo": "/assets/branding/logo.svg",
@@ -32,15 +32,23 @@ export const weddingData = {
     "startsAt": "2027-10-24T23:00:00Z",
     "timeZone": "America/Mexico_City",
     "type": "wedding",
-    "venue": {
-      "address": "San Miguel de Allende, Guanajuato",
-      "image": {
-        "alt": "Decoración de una celebración de boda",
-        "src": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1400&q=85"
-      },
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=San+Miguel+de+Allende+Guanajuato",
-      "name": "Hacienda Los Olivos"
-    }
+    "schedule": [
+      {
+        "id": "celebration",
+        "label": "01 · La celebración",
+        "title": "Celebración",
+        "startsAt": "2027-10-24T23:00:00Z",
+        "venue": {
+          "address": "San Miguel de Allende, Guanajuato",
+          "image": {
+            "alt": "Decoración de una celebración de boda",
+            "src": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1400&q=85"
+          },
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=San+Miguel+de+Allende+Guanajuato",
+          "name": "Hacienda Los Olivos"
+        }
+      }
+    ]
   },
   "gifts": {
     "message": "Tu compañía es nuestro mejor regalo.",
@@ -57,9 +65,9 @@ export const weddingData = {
       }
     ]
   },
-  "id": "boda-demo",
+  "id": "editorial-demo",
   "invitation": {
-    "id": "demo-family",
+    "id": "editorial-guest-demo",
     "maxPasses": 2
   },
   "locale": "es-MX",
@@ -71,15 +79,18 @@ export const weddingData = {
     "gallery": [
       {
         "alt": "Un momento de la celebración",
-        "src": "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=85"
+        "src": "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=85",
+        "caption": "Tú, yo"
       },
       {
         "alt": "Recuerdo de una boda",
-        "src": "https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=900&q=85"
+        "src": "https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=900&q=85",
+        "caption": "y todo lo que viene"
       },
       {
         "alt": "La pareja en su día especial",
-        "src": "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=85"
+        "src": "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=85",
+        "caption": "Siempre de tu mano"
       }
     ]
   },
@@ -90,17 +101,15 @@ export const weddingData = {
   "schemaVersion": 1,
   "presentation": {
     "editorial": {
-      "galleryTitle": "Así se siente encontrarnos",
-      "galleryNote": "La vida es más linda cuando la vivimos juntos.",
-      "photoNotes": [
-        "Tú, yo",
-        "y todo lo que viene",
-        "Siempre de tu mano"
-      ],
       "coverNote": "Aquí comienza nuestro para siempre.",
       "dressHeading": "Una noche para celebrar",
       "giftsHeading": "El mejor regalo es tenerte cerca.",
       "rsvpNote": "Hay un lugar para ti en nuestra historia."
     }
+  },
+  "story": {
+    "label": "Nuestra historia",
+    "title": "Así se siente encontrarnos",
+    "text": "La vida es más linda cuando la vivimos juntos."
   }
-};
+}

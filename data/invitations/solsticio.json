@@ -1,0 +1,120 @@
+{
+  "branding": {
+    "favicon": "/favicon.svg",
+    "logo": "/assets/branding/logo.svg",
+    "name": "Cáele.mx",
+    "tagline": "Invitaciones digitales para momentos especiales.",
+    "url": "/"
+  },
+  "dressCode": {
+    "guidelines": [
+      "Vestido largo o midi",
+      "Traje en tonos suaves"
+    ],
+    "note": "Reservemos el blanco para la novia.",
+    "title": "Formal · Tonos suaves",
+    "illustration": {
+      "src": "/assets/wedding/solsticio/attire.svg",
+      "alt": "Dibujo de vestido y traje"
+    }
+  },
+  "event": {
+    "couple": [
+      {
+        "name": "Elena"
+      },
+      {
+        "name": "Gabriel"
+      }
+    ],
+    "headline": "Nos casamos",
+    "quote": "Que la luz nos encuentre siempre juntos.",
+    "startsAt": "2027-06-21T22:00:00Z",
+    "timeZone": "America/Mexico_City",
+    "type": "wedding",
+    "schedule": [
+      {
+        "id": "celebration",
+        "label": "01 · La celebración",
+        "title": "Celebración",
+        "startsAt": "2027-06-21T22:00:00Z",
+        "venue": {
+          "address": "San Miguel de Allende, Guanajuato",
+          "image": {
+            "src": "/assets/wedding/solsticio/chapel.svg",
+            "alt": "Ilustración de una capilla entre cipreses"
+          },
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=San+Miguel+de+Allende+Guanajuato",
+          "name": "Capilla del Jardín"
+        }
+      }
+    ]
+  },
+  "gifts": {
+    "message": "Tu presencia es nuestro mejor regalo.",
+    "registries": [
+      {
+        "id": "liverpool",
+        "label": "Liverpool",
+        "url": "https://mesaderegalos.liverpool.com.mx/"
+      },
+      {
+        "id": "amazon",
+        "label": "Amazon",
+        "url": "https://www.amazon.com.mx/wedding"
+      }
+    ]
+  },
+  "id": "solsticio-demo",
+  "invitation": {
+    "id": "solsticio-guest-demo",
+    "maxPasses": 2
+  },
+  "locale": "es-MX",
+  "media": {
+    "cover": {
+      "alt": "Pareja celebrando su boda",
+      "src": "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85"
+    },
+    "gallery": [
+      {
+        "src": "/assets/wedding/solsticio/couple-meadow.jpg",
+        "alt": "Pareja de muestra abrazada en un prado al atardecer",
+        "caption": "Nuestro lugar favorito",
+        "position": "50% 35%"
+      },
+      {
+        "src": "/assets/wedding/solsticio/couple-meadow.jpg",
+        "alt": "Detalle de las manos entrelazadas de la misma pareja",
+        "caption": "Siempre cerca",
+        "position": "65% 100%",
+        "crop": {
+          "scale": 2.8,
+          "origin": "65% 100%"
+        }
+      }
+    ]
+  },
+  "rsvp": {
+    "mode": "demo",
+    "deadlineAt": "2027-06-14T22:00:00Z"
+  },
+  "schemaVersion": 1,
+  "presentation": {
+    "solsticio": {
+      "artwork": {
+        "border": "/assets/wedding/solsticio/meadow-border.webp"
+      },
+      "heroNote": "Algunos amores también son un lugar.",
+      "venueTitle": "La bendición de nuestra unión",
+      "mapsLabel": "Ver ubicación",
+      "acceptedTitle": "Tu lugar está reservado.",
+      "acceptedMessage": "Nos vemos para celebrar"
+    }
+  },
+  "story": {
+    "label": "Nuestra historia",
+    "title": "Los días contigo",
+    "text": "En los pequeños momentos también vive lo eterno."
+  }
+}

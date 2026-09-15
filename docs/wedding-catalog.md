@@ -1,23 +1,59 @@
-# Wedding catalog v0.1.0
+# Invitaciones de boda: datos y replicación
 
-Routes: /catalogo/ → /catalogo/boda/ → minimalista/ or editorial/.
-Plain HTML/CSS and ES modules. Serve the repository root using any static HTTP server (for example python3 -m http.server 8000). No build step. Absolute paths assume the existing caele.mx root deployment.
+Las cuatro plantillas son HTML/CSS/JS estático y cargan sus datos con `fetch`. Servir desde la raíz por HTTP (por ejemplo `python3 -m http.server 8000`); no requieren build ni backend.
 
-## Data contract
-js/wedding/data.js contains a JSON-serializable schemaVersion: 1 object shared by both designs. Event identity and UTC dates are separate from the invitation identity and maxPasses. media contains replaceable URLs and alternative text. Dress code, its illustration, gift registries and branding also live in this object.
-startsAt and deadlineAt must be ISO 8601 UTC strings ending in Z. timeZone stores the venue IANA zone for future editing; display uses the device zone through Intl.DateTimeFormat. Remaining time uses epoch subtraction, independent of display zone. Passed dates clamp to zero.
-getInvitation and confirmAttendance in service.js are the replacement points for the future API. The API must authorize invitation access, validate the assigned pass limit and deadline server-side, and make confirmation idempotent. Never use client maxPasses as authorization. Do not expose all guests in public JSON.
-Demo RSVP changes only the current view, without network submission or persistence. Reload resets it. The UI explicitly labels this as a demonstration.
+## Archivos de contenido
 
-## Review limitations
-Attached caele-elegante-fiel.svg and caele-favicon-elegante.svg could not be read with the available tools. Footer layout follows the reference but currently uses existing repository branding. Replace branding.logo and branding.favicon after adding the exact supplied assets. No substitute logo was fabricated.
-Remote Unsplash photos are illustrative, are not the generated mockup photos, and may depict different couples. Replace with the client's consistent licensed gallery through JSON. Venue is fictional; Maps currently searches the sample city. Registry URLs are generic demo destinations.
-No browser or filesystem execution tool was available. Model checks ran in the JavaScript runtime: future countdown, elapsed dates, UTC validation, date rollover in Tokyo, and pass limits. Browser layout, image loading, keyboard interaction and visual parity still require review at mobile and desktop widths.
+| Plantilla | JSON editable |
+| --- | --- |
+| Minimalista | `data/invitations/minimalista.json` |
+| Editorial | `data/invitations/editorial.json` |
+| Solsticio | `data/invitations/solsticio.json` |
+| Bordado | `data/invitations/bordado.json` |
 
-## Manual review
-- Open all routes via the catalog and directly, including refresh.
-- Check 360px, 768px and 1440px widths, focus visibility and reduced motion.
-- Switch device zone; check date rollover while countdown remains the same.
-- Confirm 1 or 2 passes; check success message and reset on reload.
-- Test deadline in past and zero passes; controls must be disabled.
-- Replace exact branding assets and inspect footer against reference.
+Cada archivo contiene un evento completo e independiente. Ninguno hereda nombres, fotos o pases de otra demo. `js/wedding/service.js` es el único cargador; `model.js` valida el contrato antes de renderizar. Un JSON inexistente o inválido produce un error, sin reemplazarlo silenciosamente por otro evento.
+
+## Replicar para un cliente
+
+1. Copiar el JSON del estilo elegido, por ejemplo a `data/invitations/ana-y-luis.json`.
+2. Cambiar identificadores, nombres, frases, imágenes, horarios, ubicaciones, vestimenta, regalos y pases dentro de ese archivo. Conservar `schemaVersion: 1`.
+3. Copiar el HTML de esa plantilla a la ruta del cliente, conservando sus enlaces a CSS/JS. Cambiar únicamente la fuente de datos en el elemento `body`:
+
+```html
+<body data-source="/data/invitations/ana-y-luis.json">
+```
+
+Conservar los demás atributos del `body`, en particular `class` y `data-template` cuando estén presentes. No hay que cambiar el código del renderer ni el CSS para personalizar el contenido. Las rutas absolutas asumen publicación en la raíz del dominio; al crear un repositorio por invitación, copiar también los assets, CSS y JS referidos.
+
+## Contrato compartido (schemaVersion 1)
+
+| Campo | Contenido |
+| --- | --- |
+| `id`, `locale` | Identidad del evento e idioma de formato |
+| `branding` | Logo, favicon, nombre, descripción y URL de Cáele |
+| `event.couple`, `headline`, `quote` | Nombres, encabezado y frase de portada |
+| `event.startsAt` | Instante UTC que usa la portada y el contador |
+| `event.timeZone` | Zona del lugar como referencia para preparar el evento; no fuerza la zona del visitante |
+| `event.schedule[]` | Momentos con `id` único, `label`, `title`, `startsAt` UTC y `venue` |
+| `event.schedule[].venue` | Nombre, dirección, enlace de Maps e imagen opcional |
+| `story` | Etiqueta, título y texto de la historia de pareja |
+| `media.cover`, `media.gallery[]` | URLs y textos alternativos; `caption` para recuerdos; Solsticio admite `position` y `crop` |
+| `dressCode` | Título, reglas, nota e ilustración `{ src, alt }` |
+| `gifts` | Mensaje y arreglo de mesas `{ id, label, url }` |
+| `invitation` | Identificador de la invitación y `maxPasses` |
+| `rsvp` | Fecha límite UTC y modo `demo` |
+| `presentation` | Frases y decoración propias del estilo; conservar al copiar el JSON de la plantilla |
+
+Todos los horarios usan ISO 8601 UTC con sufijo `Z`, por ejemplo `2027-11-20T23:00:00Z`. La portada, cada momento del itinerario y el plazo de RSVP se formatean con la zona del dispositivo. El contador resta instantes UTC y se detiene en cero. El itinerario se muestra en el orden del arreglo; las cuatro plantillas admiten múltiples lugares.
+
+Los textos de interfaz (por ejemplo «Confirmar asistencia» o «Ver ubicación») y las animaciones pertenecen al código de la plantilla. Los datos y frases del cliente están en el JSON.
+
+## API y RSVP
+
+`data-source` puede apuntar a la respuesta JSON de una API que respete el mismo contrato y permita su lectura desde el sitio. La confirmación sigue siendo simulada y se reinicia al recargar. Para recibir confirmaciones reales hay que implementar `confirmAttendance` en `service.js`, con autorización, límites de pases y plazo validados en el servidor. Un archivo JSON público no sustituye el control de acceso de una API.
+
+## Verificación
+
+`node --experimental-vm-modules tests/bordado.cjs` comprueba las cuatro fuentes, carga de una fuente de cliente, independencia entre eventos, UTC, horarios, pases, archivos de imágenes y sintaxis de módulos.
+
+Las fotos, direcciones y mesas de regalos actuales son de muestra. Revisar los recursos del cliente antes de publicar. El footer y la navegación de catálogo son compartidos por las cuatro plantillas. La revisión visual en navegador queda fuera de esta sesión, según la preferencia del usuario.
