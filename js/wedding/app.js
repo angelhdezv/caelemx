@@ -1,5 +1,6 @@
 import { getInvitation, confirmAttendance } from "./service.js";
 import { remaining, localDate } from "./model.js";
+import { setupPassStepper } from "./passes.js";
 const root = document.querySelector("#invitation");
 const el = (tag, text, cls) => {
  const node = document.createElement(tag);
@@ -42,7 +43,6 @@ try {
  else { const rings = el("div", "○○", "rings"); rings.setAttribute("aria-hidden","true"); hero.append(rings); }
  hero.append(el("h1",names),el("p",data.event.quote,"quote"));
  const date = el("time",localDate(data.event.startsAt,data.locale)); date.dateTime = data.event.startsAt; hero.append(date);
- hero.append(el("p","Fecha y hora en tu zona: " + Intl.DateTimeFormat().resolvedOptions().timeZone,"timezone"));
  root.append(hero);
  const countdown = section("cuenta-regresiva","Falta poco para encontrarnos");
  const digits = el("div",null,"countdown");
@@ -83,6 +83,7 @@ try {
   } catch(error) { status.textContent = error.message; button.disabled = false; }
  });
  root.append(rsvp);
+ setupPassStepper(root, data);
  if (editorial) {
   const { enhanceEditorial } = await import("./editorial.js");
   enhanceEditorial(root, data);

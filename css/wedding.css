@@ -55,3 +55,14 @@ html{scroll-padding-top:110px}.minimalist .invitation{max-width:900px;box-shadow
  .brand-footer>p:not(.eyebrow){flex-basis:100%;font-size:.7rem}
  .brand-footer small{flex-basis:100%}
 }
+
+/* Minimalist attendance control: ivory paper and fine gold borders. */
+.minimalist #rsvp form>label{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase}
+.minimalist .pass-stepper{display:flex;align-items:center;justify-content:space-between;gap:16px;width:240px;max-width:100%;padding:8px;border:1px solid var(--accent);outline:1px solid var(--line);outline-offset:4px;background:var(--paper)}
+.minimalist .pass-stepper button{display:grid;place-items:center;flex:0 0 44px;height:44px;padding:0;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);font-size:1.5rem;line-height:1;cursor:pointer}
+.minimalist .pass-stepper button:not(:disabled):hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.minimalist .pass-stepper button:disabled{opacity:.3;cursor:default}
+.minimalist .pass-value{display:flex;flex-direction:column;align-items:center}
+.minimalist .pass-value select{appearance:none;border:0;border-radius:0;background:transparent;color:var(--ink);font:400 2.6rem/1.1 var(--serif);text-align:center;min-width:64px;padding:0 8px;cursor:pointer}
+.minimalist .pass-value span{font-size:.52rem;letter-spacing:.16em;color:var(--ink)}
+.minimalist #rsvp .primary{margin-top:12px}
