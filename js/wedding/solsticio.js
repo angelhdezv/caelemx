@@ -14,7 +14,7 @@ function meadow(data, placement) {
  for (const side of ["left", "right"]) {
   const slot = document.createElement("div"); slot.className = `sol-garden-side sol-garden-side--${side}`;
   const image = document.createElement("img");
-  image.src = data.presentation.solsticio.artwork.border;
+  image.src = data.presentation?.solsticio?.artwork?.border || '/assets/wedding/solsticio/meadow-border.webp';
   image.alt = ""; image.width = 1024; image.height = 1536;
   image.decoding = "async"; image.loading = placement === "hero" ? "eager" : "lazy";
   image.className = "sol-garden-image"; slot.append(image); layer.append(slot);
@@ -22,7 +22,7 @@ function meadow(data, placement) {
  return layer;
 }
 export function enhanceSolsticio(root, data) {
- const copy = data.presentation.solsticio;
+ const copy = data.presentation?.solsticio || {};
  const hero = root.querySelector("#portada");
  hero.querySelector(".rings").remove();
  const title = hero.querySelector("h1"); title.replaceChildren();
@@ -34,11 +34,11 @@ export function enhanceSolsticio(root, data) {
  content.append(art("sun", "sol-sun"), ...hero.children);
  title.after(content.querySelector("time"));
  hero.append(meadow(data, "hero"), content, art("butterfly", "sol-butterfly"));
- const note = document.createElement("p"); note.className = "sol-margin-note"; note.textContent = copy.heroNote; hero.append(note);
+ if (copy.heroNote) { const note = document.createElement("p"); note.className = "sol-margin-note"; note.textContent = copy.heroNote; hero.append(note); }
 
  const gallery = root.querySelector("#nosotros");
- gallery.querySelector("h2").textContent = copy.galleryTitle;
- gallery.querySelector(".quote").textContent = copy.galleryNote;
+ gallery.querySelector("h2").textContent = data.story.title;
+ gallery.querySelector(".quote").textContent = data.story.text;
  const heading = document.createElement("header"); heading.className = "sol-story-heading";
  heading.append(gallery.querySelector("h2"), gallery.querySelector(".quote")); gallery.prepend(heading);
  [...gallery.querySelectorAll(".gallery img")].forEach((image,index) => {
@@ -59,9 +59,9 @@ export function enhanceSolsticio(root, data) {
  gallery.append(art("sprig", "sol-story-sprig"));
 
  const venue = root.querySelector("#lugar");
- venue.querySelector("h2").textContent = copy.venueTitle;
+ venue.querySelector("h2").textContent = copy.venueTitle || 'La celebración';
  venue.querySelector(".venue-grid>div").prepend(venue.querySelector("h2"));
- venue.querySelector(".button").textContent = copy.mapsLabel;
+ venue.querySelectorAll(".button").forEach(button => { button.textContent = copy.mapsLabel || 'Ver ubicación'; });
  venue.append(bouquet("foliage", "sol-venue-sprig"));
  const gifts = root.querySelector("#regalos"); gifts.querySelector("h2").after(art("gift", "sol-gift"));
  const dress = root.querySelector("#vestimenta");
@@ -74,8 +74,8 @@ export function enhanceSolsticio(root, data) {
  root.addEventListener("attendanceconfirmed", event => {
   const status = rsvp.querySelector(".rsvp-status");
   status.prepend(bouquet("bloom", "sol-confirmation-flower"));
-  status.querySelector("strong").textContent = copy.acceptedTitle;
-  status.querySelector("p").textContent = `${copy.acceptedMessage} · ${event.detail.attendees} ${event.detail.attendees === 1 ? "persona" : "personas"}`;
+  status.querySelector("strong").textContent = copy.acceptedTitle || 'Tu lugar está reservado.';
+  status.querySelector("p").textContent = `${copy.acceptedMessage || 'Nos vemos para celebrar'} · ${event.detail.attendees} ${event.detail.attendees === 1 ? "persona" : "personas"}`;
   rsvp.classList.add("sol-confirmed");
  }, {once:true});
 }

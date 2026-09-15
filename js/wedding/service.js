@@ -1,16 +1,19 @@
-import { weddingData } from "./data.js";
 import { validate, validPasses } from "./model.js";
 // Replace these two functions with the API adapter. Keep credentials and authorization on the server.
-export async function getInvitation(template) {
- if (template === "bordado") {
-  const { bordadoData } = await import("./bordado-data.js");
-  return validate(JSON.parse(JSON.stringify(bordadoData)));
- }
- if (template === "solsticio") {
-  const { solsticioData } = await import("./solsticio-data.js");
-  return validate(JSON.parse(JSON.stringify(solsticioData)));
- }
- return validate(JSON.parse(JSON.stringify(weddingData)));
+const sources = Object.freeze({
+ minimalist: '/data/invitations/minimalista.json',
+ minimalista: '/data/invitations/minimalista.json',
+ editorial: '/data/invitations/editorial.json',
+ solsticio: '/data/invitations/solsticio.json',
+ bordado: '/data/invitations/bordado.json'
+});
+export async function getInvitation(template, { source, fetchImpl = globalThis.fetch } = {}) {
+ if (!Object.hasOwn(sources, template)) throw new Error('Plantilla no compatible.');
+ const url = new URL(source || sources[template], globalThis.location?.href || 'http://localhost/');
+ if (!['http:', 'https:'].includes(url.protocol)) throw new Error('Fuente de datos no permitida.');
+ const response = await fetchImpl(url.href, { cache: 'no-cache' });
+ if (!response.ok) throw new Error('No se pudieron cargar los datos de la invitación.');
+ return validate(await response.json());
 }
 export async function confirmAttendance(data, attendees) {
  if (data.rsvp.mode !== "demo") throw new Error("Servicio de confirmación no configurado.");

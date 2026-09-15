@@ -31,7 +31,7 @@ function section(id, label) {
  return s;
 }
 try {
- const data = await getInvitation(document.body.dataset.template);
+ const data = await getInvitation(document.body.dataset.template, { source: document.body.dataset.source });
  const editorial = document.body.dataset.template === "editorial";
  const names = data.event.couple.map(p => p.name).join(editorial ? " y " : " & ");
  document.title = names + " · Invitación de boda | Cáele.mx";
@@ -53,12 +53,19 @@ try {
  tick(); const interval = setInterval(tick,1000);
  window.addEventListener("pagehide",() => clearInterval(interval),{once:true});
  window.addEventListener("pageshow",e => { if(e.persisted) location.reload(); });
- const gallery = section("nosotros","Nosotros"); gallery.append(el("p","Misma historia. Más aventuras.","quote"));
+ const gallery = section("nosotros",data.story.title); gallery.append(el("p",data.story.text,"quote"));
  const grid = el("div",null,"gallery"); data.media.gallery.forEach(img => grid.append(photo(img))); gallery.append(grid); root.append(gallery);
  const venue = section("lugar","La celebración");
- const venueGrid = el("div",null,"venue-grid"); venueGrid.append(photo(data.event.venue.image));
- const details = el("div"); details.append(el("h3",data.event.venue.name),el("p",data.event.venue.address),el("p",localDate(data.event.startsAt,data.locale)),link("Ver en Google Maps",data.event.venue.mapsUrl));
- venueGrid.append(details); venue.append(venueGrid); root.append(venue);
+ for (const item of data.event.schedule) {
+  const venueGrid = el("div",null,"venue-grid");
+  if (item.venue.image) venueGrid.append(photo(item.venue.image));
+  else venueGrid.classList.add('venue-grid--text-only');
+  const details = el("div");
+  if (data.event.schedule.length > 1) details.append(el('p', item.title, 'eyebrow'));
+  details.append(el("h3",item.venue.name),el("p",item.venue.address),el("p",localDate(item.startsAt,data.locale)),link("Ver en Google Maps",item.venue.mapsUrl));
+  venueGrid.append(details); venue.append(venueGrid);
+ }
+ root.append(venue);
  const dress = section("vestimenta","Código de vestimenta"); dress.append(el("h3",data.dressCode.title));
  const illustration = photo(data.dressCode.illustration); illustration.className = "attire"; dress.append(illustration);
  const guidelines = el("ul",null,"guidelines"); data.dressCode.guidelines.forEach(item => guidelines.append(el("li",item))); dress.append(guidelines,el("p",data.dressCode.note,"quote")); root.append(dress);

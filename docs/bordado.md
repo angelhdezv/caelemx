@@ -2,7 +2,9 @@
 
 Independent mobile-first template at `/catalogo/boda/bordado/`, based on the approved asymmetric textile composition. Existing templates are unchanged.
 
-Content: `js/wedding/bordado-data.js`, exposed through the existing service adapter. Schedule supports multiple venues and UTC instants; presentation uses the device timezone. RSVP is a simulation, not persisted and not sent to a server. All guest authorization and pass validation must also live server-side when connecting the API.
+Content: `data/invitations/bordado.json`, loaded through the shared service adapter. The HTML `data-source` attribute selects a different event without editing JS/CSS. The four templates now share a JSON contract and array-based schedule. See `docs/wedding-catalog.md` for replication instructions. RSVP is a simulation, not persisted and not sent to a server.
+
+Desktop: the hero garland retains its original 3:1 proportions inside a centered width limit. Schedule entries form a horizontal itinerary; the details and illustrated attire sit beside the RSVP card below it. Mobile keeps its vertical reading order. The closing floral garland is unchanged.
 
 Motion: introductory seam, delayed names, one-shot contact photo/card entrances, scroll-linked itinerary seam, animated accordions and confirmation check. Flowers and textile stay static. Birds now use eight registered sprite poses: four head positions and four wing positions. Each six-second cycle includes visible perched sway, head turns, takeoff, flight beyond the invitation edge, turn, return and landing. Birds have staggered starts. Motion pauses when its section leaves the viewport or the tab is hidden; reduced-motion shows a stationary bird. The original cutout remains as fallback if the sprite cannot load.
 
@@ -16,6 +18,7 @@ Generated with the built-in image-generation tool; original raster outputs conve
 - `assets/wedding/bordado/bird-poses.webp`: generated 4-column × 2-row sprite sheet based on that bird. Top row: neutral, head down, looking back, head up. Bottom row: four wing positions with feet tucked. Fixed body registration and colors; a second image-generation pass removed the painted checkerboard to produce real alpha transparency. Converted to WebP at 1280 × 640 (320px per pose).
 - `assets/wedding/bordado/linen.webp`: seamless deep bottle-green woven linen, evenly lit, fine threads, no folds, objects or text.
 - `assets/wedding/bordado/couple.jpg`: fictional couple, ivory lace and green suit, forehead kiss, warm garden light, candid 3:2 editorial portrait.
+- `assets/wedding/bordado/attire.webp`: generated formalwear illustration, dusty-rose long gown and dark-green suit, watercolor/pencil fabric details and delicate embroidery, warm ivory background, no people or text. Optimized to 960 × 640 and referenced through `dressCode.illustration`.
 
 Gallery side images and venue/registry links are demonstration content; replace in the data module for a real invitation.
 

@@ -6,3 +6,39 @@
 @media(min-width:900px){.textile{margin:24px auto}.hero{padding-top:65px;grid-template-columns:minmax(0,1fr) 170px}.hero-copy{padding-left:35px}h1{font-size:110px}.love-note{font-size:36px}.date-ribbon{font-size:40px}.hero-embroidery{height:185px}.hero-embroidery .bird{width:145px;height:145px}.story-photo>img{aspect-ratio:2.2}.story-photo figcaption{font-size:30px}.story-chapter{grid-template-columns:180px 1fr;padding-block:35px}.story-chapter>div:last-child{display:flex;align-items:center;gap:45px}.story-chapter h2{white-space:nowrap}.contact-strip img{aspect-ratio:1.8}.celebration-layout{display:grid;grid-template-columns:1fr 1fr;padding:45px 6% 0;gap:45px}.itinerary{margin:0;padding:0 0 0 65px;border-bottom:0}.itinerary-thread{left:22px}.thread-flower{left:-56px}.details{padding:0}.details>h2{font-size:34px}.rsvp-wrap{padding-top:40px}.signature{padding-bottom:35px}}
 @media(max-width:359px){.hero{padding-inline:16px;grid-template-columns:minmax(0,1fr) 58px}h1{font-size:48px}.hero-embroidery{margin-inline:-16px}.date-ribbon{font-size:20px}.love-note{font-size:21px}.story-chapter{padding-inline:16px}.rsvp-wrap{padding-inline:19px}.rsvp-card{padding-inline:12px}.demo-bar{gap:8px}.choose{font-size:11px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.reveal{opacity:1!important}.itinerary-thread span{transform:none}}
+
+/* Keep the botanical artwork proportional; layout changes are confined to desktop. */
+.itinerary-events{position:relative}
+.itinerary>#itinerary-title{font-size:30px;margin:0 0 28px}
+.itinerary .itinerary-thread{left:-30px}
+.attire-preview{margin:0 5px 18px;padding:12px;border:1px dashed #d1a65a88;background:#f1e5c9}
+.attire-preview img{display:block;width:100%;height:auto;max-height:230px;object-fit:contain;mix-blend-mode:multiply}
+@media(min-width:600px){.itinerary .itinerary-thread{left:-45px}}
+@media(min-width:900px){
+ .hero-embroidery{width:min(100%,900px);height:auto;aspect-ratio:3/1;margin:12px auto -20px}
+ .hero-embroidery>.flowers{object-fit:contain}
+ .hero-embroidery .bird{width:120px;height:120px;bottom:14%}
+ .hero-embroidery .bird--left{left:11%}
+ .hero-embroidery .bird--right{right:11%}
+ .celebration-layout{grid-template-areas:"itinerary itinerary" "details rsvp";grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;gap:48px 56px;padding:52px 7% 16px}
+ .itinerary{grid-area:itinerary;padding:0;margin:0}
+ .itinerary>#itinerary-title{margin-bottom:30px;font-size:38px;text-align:center}
+ .itinerary-events{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+ .itinerary article{display:flex;flex-direction:column;align-items:flex-start;min-width:0;padding:44px 24px 24px;border-bottom:1px dashed #d1a65a77}
+ .itinerary .itinerary-thread{left:24px;right:24px;top:12px;bottom:auto;height:2px;border-left:0;border-top:2px dashed #d1a65a35}
+ .itinerary-thread span{inset:-2px 0 auto;height:2px;border-left:0;border-top:2px dashed var(--gold);transform:scaleX(var(--progress));transform-origin:left}
+ .thread-flower{left:12px;top:-3px;background:var(--green);padding-inline:4px}
+ .itinerary article h2{font-size:35px}
+ .itinerary article .stitched-link{margin-top:auto}
+ .itinerary article p.address{margin-bottom:18px}
+ .details{grid-area:details;padding:0}
+ .details>h2{font-size:34px;margin-bottom:20px}
+ .detail-toggle{padding-block:16px}
+ .attire-preview{margin-bottom:20px;padding:16px}
+ .attire-preview img{max-height:250px}
+ .celebration-layout>.rsvp-wrap{grid-area:rsvp;align-self:center;width:100%;max-width:none;margin:0;padding:24px 10px}
+ .rsvp-card{padding:38px 24px 30px}
+ .rsvp-card h2{font-size:38px}
+ .rsvp-card .eyebrow{font-size:10px;letter-spacing:.12em}
+}
+@media(prefers-reduced-motion:reduce){.itinerary-thread span{transform:none}}

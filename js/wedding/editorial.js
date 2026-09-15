@@ -33,13 +33,13 @@ export function enhanceEditorial(root, data) {
  root.querySelector("#cuenta-regresiva h2").textContent = "Cada vez más cerca";
 
  const gallery = root.querySelector("#nosotros");
- gallery.querySelector("h2").textContent = copy.galleryTitle || "Nosotros";
- gallery.querySelector(".quote").textContent = copy.galleryNote || "";
+ gallery.querySelector("h2").textContent = data.story.title;
+ gallery.querySelector(".quote").textContent = data.story.text;
  const images = [...gallery.querySelectorAll(".gallery img")];
  images.forEach((image,i) => {
   const figure = node("figure",null,"memory memory-" + (i+1));
   image.replaceWith(figure); figure.append(image);
-  if(copy.photoNotes?.[i]) figure.append(node("figcaption",copy.photoNotes[i],"handwritten"));
+  if(data.media.gallery[i].caption) figure.append(node("figcaption",data.media.gallery[i].caption,"handwritten"));
  });
  gallery.append(flourish());
 
