@@ -1,6 +1,7 @@
 import { getInvitation, confirmAttendance } from "./service.js";
 import { remaining, localDate } from "./model.js";
 import { setupPassStepper } from "./passes.js";
+import { renderBrandFooter } from "./footer.js";
 const root = document.querySelector("#invitation");
 const el = (tag, text, cls) => {
  const node = document.createElement(tag);
@@ -93,9 +94,7 @@ try {
   const { enhanceSolsticio } = await import("./solsticio.js");
   enhanceSolsticio(root, data);
  }
- const footer = document.querySelector("#brand-footer");
- const logo = photo({src:data.branding.logo,alt:data.branding.name}); const home = link("",data.branding.url,"footer-logo"); home.append(logo);
- footer.append(el("p","Developed by","eyebrow"),el("hr"),home,el("p",data.branding.tagline),el("small","© " + new Date().getFullYear() + " " + data.branding.name));
+ renderBrandFooter(document.querySelector("#brand-footer"), data.branding);
 } catch(error) {
  root.replaceChildren(el("h1","No pudimos cargar la invitación"),el("p","Intenta recargar la página."),link("Volver al catálogo","/catalogo/boda/"));
  console.error(error);

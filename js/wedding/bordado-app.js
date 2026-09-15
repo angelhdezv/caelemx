@@ -1,12 +1,14 @@
 import { getInvitation, confirmAttendance } from './service.js';
 import { remaining } from './model.js';
+import { renderBrandFooter } from './footer.js';
+import { setupBirds } from './bordado-birds.js';
 
 const root = document.querySelector('#invitation');
 const escape = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const safeURL = value => { const url = new URL(value, location.href); if (!['https:', 'http:'].includes(url.protocol)) throw new Error('Enlace no válido.'); return escape(url.href); };
 const photo = (item, eager = false) => `<img src="${safeURL(item.src)}" alt="${escape(item.alt)}" width="1200" height="800" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
 const flowers = '<img class="flowers" src="/assets/wedding/bordado/garland.webp" alt="" width="1536" height="512" aria-hidden="true">';
-const bird = side => `<span class="bird bird--${side}" aria-hidden="true"><img src="/assets/wedding/bordado/bird.webp" alt="" width="256" height="256"></span>`;
+const bird = side => `<span class="bird bird--${side}" aria-hidden="true"><span class="bird-flight"><span class="bird-facing"><span class="bird-pose"><img src="/assets/wedding/bordado/bird.webp" alt="" width="256" height="256"><span class="bird-sprite"></span></span></span></span></span>`;
 
 try {
  const data = await getInvitation('bordado');
@@ -32,7 +34,9 @@ try {
   <section class="rsvp-wrap" aria-labelledby="rsvp-title"><div class="rsvp-card reveal"><span class="corner tl" aria-hidden="true">×</span><span class="corner tr" aria-hidden="true">×</span><span class="corner bl" aria-hidden="true">×</span><span class="corner br" aria-hidden="true">×</span><p class="eyebrow">Guardamos un lugar para ti</p><h2 id="rsvp-title">¿Vienes a celebrar?</h2><p>Tienes ${invitation.maxPasses} ${invitation.maxPasses === 1 ? 'pase reservado' : 'pases reservados'}.</p>
    <form id="rsvp-form"><label for="attendees">Personas que asistirán</label><div class="pass-stepper"><button type="button" id="minus" aria-label="Quitar un asistente">−</button><input id="attendees" name="attendees" type="number" min="1" max="${invitation.maxPasses}" value="${Math.max(1, invitation.maxPasses)}" step="1" inputmode="numeric" required><button type="button" id="plus" aria-label="Agregar un asistente">+</button></div><button class="confirm" type="submit">Confirmar asistencia <span aria-hidden="true">→</span></button><p class="deadline">Confirma antes del ${escape(format(rsvp.deadlineAt, { dateStyle: 'long' }))}.</p><small class="demo-note">Invitación de muestra · Confirmación simulada</small></form>
    <div id="rsvp-result" role="status" tabindex="-1" hidden><svg class="stitched-check" viewBox="0 0 60 60" aria-hidden="true"><path d="m12 30 12 12 25-26"/></svg><h3>¡Asistencia confirmada!</h3><p></p></div><p id="rsvp-error" role="alert"></p>
-  </div></section><footer class="signature"><div class="signature-embroidery">${flowers}${bird('footer')}</div><a href="${safeURL(data.branding.url)}">— ${escape(data.branding.name)} —</a></footer>`;
+  </div></section><div class="signature" aria-hidden="true"><div class="signature-embroidery">${flowers}${bird('footer')}</div></div>`;
+ renderBrandFooter(document.querySelector('#brand-footer'), data.branding);
+ setupBirds(root);
 
  const updateCountdown = () => {
   const [days, hours, minutes, seconds] = remaining(event.startsAt);
