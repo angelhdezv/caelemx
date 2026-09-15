@@ -12,10 +12,17 @@
  <link rel="stylesheet" href="/css/bordado.css">
  <link rel="stylesheet" href="/css/bordado-birds.css">
  <script type="module" src="/js/wedding/bordado-app.js"></script>
-<link rel="stylesheet" href="/css/invitation-footer.css"></head>
+<link rel="stylesheet" href="/css/invitation-footer.css"><link rel="stylesheet" href="/css/invitation-preview.css"></head>
 <body>
  <a class="skip" href="#invitation">Saltar a la invitación</a>
- <header class="demo-bar"><a href="/" aria-label="Cáele.mx, inicio"><img src="/assets/branding/logo.svg" alt="Cáele.mx" width="100" height="35"></a><nav aria-label="Ruta de navegación"><a href="/catalogo/">Catálogo</a><span>/</span><a href="/catalogo/boda/">Boda</a><span>/</span><span aria-current="page">Bordado</span></nav><a class="choose" href="mailto:contacto@caele.mx?subject=Invitación%20Bordado">Quiero esta invitación</a></header>
+ <header class="invitation-preview-header">
+ <a class="invitation-preview-brand" href="/" aria-label="Cáele.mx, inicio"><img src="/assets/branding/logo.svg" alt="Cáele.mx" width="110" height="40"></a>
+ <nav class="invitation-preview-breadcrumbs" aria-label="Ruta de navegación"><a href="/catalogo/">Catálogo</a><span aria-hidden="true">/</span><a href="/catalogo/boda/">Boda</a><span aria-hidden="true">/</span><span aria-current="page">Bordado</span></nav>
+</header>
+<nav class="invitation-preview-actions" aria-label="Opciones de la invitación">
+ <a class="invitation-preview-back" href="/catalogo/boda/"><span aria-hidden="true">←</span><span>Volver a los diseños</span></a>
+ <a class="invitation-preview-interest" href="mailto:contacto@caele.mx?subject=Quiero%20la%20invitaci%C3%B3n%20bordado"><span>Quiero esta invitación</span></a>
+</nav>
  <main id="invitation" class="textile" aria-label="Invitación de boda"><p class="loading" role="status">Preparando nuestra historia…</p><noscript>Activa JavaScript para ver los detalles y confirmar asistencia.</noscript></main>
 <footer id="brand-footer" class="invitation-footer"></footer>
 </body>
