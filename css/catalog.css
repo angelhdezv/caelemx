@@ -4,3 +4,9 @@
 @media(max-width:840px){.catalog-hero{grid-template-columns:1fr;gap:0}.catalog-hero>img{max-width:400px;margin:auto}.collection-copy{padding:2rem}.collection-art{min-height:380px}.paper-preview,.photo-preview{height:280px}.catalog-contact{align-items:flex-start;flex-direction:column}.collection-count{white-space:normal}}
 @media(max-width:640px){.site-nav .nav-catalog{display:block;font-size:.8rem}.catalog-grid,.collection-card{grid-template-columns:1fr}.collection-art{min-height:340px;max-width:420px;width:100%;margin:auto}.paper-preview,.photo-preview{top:20px}.catalog-hero{padding-top:1rem;padding-bottom:2rem}.section-heading{align-items:flex-start;flex-direction:column}.wedding-heading{text-align:left;padding:1rem 0 2rem}.feature-pills{justify-content:flex-start;gap:.4rem}.feature-pills span{font-size:.7rem}.preview{height:430px}.catalog-contact{padding:1.6rem}.catalog-contact .catalog-button{width:100%}.card-copy p{min-height:0}.catalog h1{font-size:3.1rem}}
 @media(prefers-reduced-motion:reduce){.catalog-button,.template-card{transition:none;transform:none!important}}
+
+.preview-solsticio{background:#fffef7!important;color:#21432e!important;position:relative;overflow:hidden}.preview-solsticio .preview-sun{position:static;width:65px;height:65px;object-fit:contain;margin:0 auto 12px}.preview-solsticio .preview-flower{position:absolute;inset:auto 12px 20px auto;width:58px;height:160px;object-fit:contain}.preview-solsticio strong{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;line-height:1;position:relative;z-index:1}.preview-solsticio p{font-style:italic;font-family:Georgia,serif;font-size:.85rem}
+
+.preview-solsticio:after{display:none}
+
+.preview-solsticio .preview-flower{inset:auto auto 0 -12px;width:52%;height:auto;max-height:none;opacity:.95;z-index:0}.preview-solsticio>.eyebrow,.preview-solsticio>p,.preview-solsticio>.preview-sun{position:relative;z-index:1}

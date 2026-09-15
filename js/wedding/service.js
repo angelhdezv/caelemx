@@ -1,7 +1,11 @@
 import { weddingData } from "./data.js";
 import { validate, validPasses } from "./model.js";
 // Replace these two functions with the API adapter. Keep credentials and authorization on the server.
-export async function getInvitation() {
+export async function getInvitation(template) {
+ if (template === "solsticio") {
+  const { solsticioData } = await import("./solsticio-data.js");
+  return validate(JSON.parse(JSON.stringify(solsticioData)));
+ }
  return validate(JSON.parse(JSON.stringify(weddingData)));
 }
 export async function confirmAttendance(data, attendees) {
