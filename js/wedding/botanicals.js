@@ -35,3 +35,18 @@ export function bouquet(variant = "meadow", className = "") {
  });
  return svg;
 }
+
+// A low meadow joins the illustrated corners without crossing the text area.
+export function meadowGround() {
+ const svg = svgNode("svg", {viewBox:"0 0 1000 100",preserveAspectRatio:"none",fill:"none",stroke:"#687448","stroke-width":.8,"stroke-linecap":"round","aria-hidden":"true",focusable:"false",class:"sol-ground"});
+ for (let i=0;i<55;i++) {
+  const x = i*19-5, height = 20+(i*17)%54, lean = (i%3-1)*9;
+  const stem = svgNode("g", {class:"sol-grass"});
+  stem.style.transformOrigin = `${x}px 100px`;
+  stem.style.setProperty("--stem-phase", `${-(i%9)/3}s`);
+  stem.append(svgNode("path", {d:`M${x} 100Q${x+lean*2} ${100-height/2} ${x+lean} ${100-height}M${x} 91q-11 -18 -9 -28M${x+2} 87q12 -18 11 -25`}));
+  for(let n=0;n<3;n++) stem.append(svgNode("ellipse",{cx:x+lean+(n%2?3:-3),cy:100-height+n*6,rx:1.7,ry:3.5,fill:i%4===0?"#dbbe66":"#b7bf94",transform:`rotate(${n%2?25:-25} ${x+lean} ${100-height+n*6})`}));
+  svg.append(stem);
+ }
+ return svg;
+}
