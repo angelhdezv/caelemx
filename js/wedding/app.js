@@ -80,6 +80,7 @@ try {
    const result = await confirmAttendance(data,Number(select.value));
    form.hidden = true; status.classList.add("accepted");
    status.append(el("strong","✓ ¡Asistencia confirmada!"),el("p","Te esperamos · " + result.attendees + (result.attendees === 1 ? " persona" : " personas")));
+   root.dispatchEvent(new CustomEvent("attendanceconfirmed", {detail:result}));
   } catch(error) { status.textContent = error.message; button.disabled = false; }
  });
  root.append(rsvp);

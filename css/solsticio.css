@@ -98,3 +98,39 @@
  .solsticio .sol-bouquet-border .sol-flower{width:88px;flex-basis:88px;height:100px}
  .solsticio .sol-bouquet-border .sol-bouquet--center{width:28px;flex-basis:28px;height:65px}
 }
+
+/* Botanical art direction: independent stems instead of rigid moving bouquets. */
+.solsticio .sol-botanical{overflow:visible;pointer-events:none}
+.solsticio .sol-botanical.sol-flower{animation:none;will-change:auto}
+.solsticio .sol-stem{transform-origin:110px 250px;animation:sol-stem-sway 3s ease-in-out var(--stem-phase,0s) infinite}
+@keyframes sol-stem-sway{0%,100%{transform:rotate(calc(-1 * var(--stem-angle,3deg)))}50%{transform:rotate(var(--stem-angle,3deg))}}
+.solsticio .sol-hero-meadow{position:relative;height:220px;margin:5px -12% -20px;display:flex;align-items:flex-end;justify-content:space-between;pointer-events:none}
+.solsticio .sol-meadow-full{width:190px;height:230px}
+.solsticio .sol-meadow-airy{width:140px;height:175px;margin-right:8px}
+.solsticio .sol-bouquet-border:nth-of-type(even){justify-content:space-around}
+.solsticio .sol-memory{margin:0;min-width:0}
+.solsticio .sol-memory:nth-child(2){margin-top:65px}
+.solsticio .sol-memory img{width:100%;height:auto;aspect-ratio:3/4;filter:sepia(.15) saturate(.65) brightness(1.04)}
+.solsticio .sol-memory:nth-child(2) img{aspect-ratio:1;object-fit:cover}
+.solsticio .sol-memory figcaption{padding-top:12px;font:italic 1.05rem var(--serif);color:#53664e}
+.solsticio .sol-memory:nth-child(2){overflow:hidden}
+.solsticio .sol-memory:nth-child(2) img{clip-path:inset(0);object-position:50% 30%}
+.solsticio .sol-confirmation-flower{display:block;width:110px;height:125px;margin:0 auto 12px}
+.solsticio .sol-confirmation-flower .sol-stem{animation:none}
+.solsticio .sol-confirmation-flower .sol-petals{transform-box:fill-box;transform-origin:center;animation:sol-bloom .8s ease-out both}
+.solsticio .sol-confirmed .accepted{border:0;padding:10px 0;margin:20px auto;animation:sol-accepted .45s ease-out both}
+.solsticio .sol-confirmed .accepted strong{display:block;font-size:2rem}
+.solsticio .sol-confirmed .accepted p{font-size:.9rem;line-height:1.7}
+@keyframes sol-bloom{from{transform:scale(.15) rotate(-35deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
+@keyframes sol-accepted{from{opacity:0;translate:0 8px}to{opacity:1;translate:0 0}}
+@media(max-width:600px){
+ .solsticio .sol-hero-meadow{height:150px;margin:5px -8% -15px}
+ .solsticio .sol-meadow-full{width:125px;height:160px}.solsticio .sol-meadow-airy{width:85px;height:115px}
+ .solsticio .sol-stem{--stem-angle:2.5deg!important}
+ .solsticio .sol-memory:nth-child(2){margin-top:35px}
+ .solsticio .sol-memory figcaption{font-size:.95rem}
+}
+@media(prefers-reduced-motion:reduce){.solsticio .sol-stem,.solsticio .sol-confirmation-flower .sol-petals,.solsticio .sol-confirmed .accepted{animation:none;transform:none}}
+@media print{.solsticio .sol-stem,.solsticio .sol-confirmation-flower .sol-petals,.solsticio .sol-confirmed .accepted{animation:none;transform:none}}
+
+.solsticio .sol-detail-crop{aspect-ratio:1;overflow:hidden}.solsticio .sol-detail-crop img{height:100%;transform:scale(1.45);transform-origin:50% 30%}
