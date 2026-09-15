@@ -30,7 +30,7 @@ function section(id, label) {
  return s;
 }
 try {
- const data = await getInvitation();
+ const data = await getInvitation(document.body.dataset.template);
  const editorial = document.body.dataset.template === "editorial";
  const names = data.event.couple.map(p => p.name).join(editorial ? " y " : " & ");
  document.title = names + " · Invitación de boda | Cáele.mx";
@@ -87,6 +87,10 @@ try {
  if (editorial) {
   const { enhanceEditorial } = await import("./editorial.js");
   enhanceEditorial(root, data);
+ }
+ if (document.body.dataset.template === "solsticio") {
+  const { enhanceSolsticio } = await import("./solsticio.js");
+  enhanceSolsticio(root, data);
  }
  const footer = document.querySelector("#brand-footer");
  const logo = photo({src:data.branding.logo,alt:data.branding.name}); const home = link("",data.branding.url,"footer-logo"); home.append(logo);
