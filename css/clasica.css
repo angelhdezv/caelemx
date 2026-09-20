@@ -11,6 +11,7 @@
   --serif: 'Classic Serif', Georgia, serif; --script: 'Classic Script', 'Brush Script MT', cursive;
   margin: 0; background: var(--background); color: var(--paper); font: 400 20px/1.4 var(--serif);
   -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: clip;
+  position: relative; min-height: 100svh; isolation: isolate;
 }
 .clasica *, .clasica *::before, .clasica *::after { box-sizing: border-box; }
 .clasica [hidden] { display: none !important; }
@@ -29,7 +30,7 @@
 .loading { padding: 40vh 24px; text-align: center; }
 .load-error { max-width: 420px; margin: 25vh auto; padding: 24px; text-align: center; }
 .classic-shell { position: relative; max-width: 560px; min-height: 100svh; margin: 0 auto; padding: 0 18px; isolation: isolate; }
-.classic-shell::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: -1; background-image: var(--paper-texture); background-size: 370px; opacity: .12; mix-blend-mode: soft-light; }
+.clasica::before { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: -1; background-image: var(--paper-texture); background-size: 370px; opacity: .12; mix-blend-mode: soft-light; }
 .classic-header { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 19px 9px 12px; position: relative; z-index: 10; }
 .classic-brand { font: 500 31px/1 var(--serif); text-decoration: none; letter-spacing: -.035em; }
 .classic-menu { position: relative; }
@@ -44,7 +45,7 @@
 .intro-greeting p { font-size: 22px; letter-spacing: .015em; }
 .intro-greeting .ornament { margin: 10px auto 0; }
 .folio-stage { perspective: 1400px; padding: 8px 11px 0; }
-.folio { position: relative; width: 100%; margin: 0 auto; container-type: inline-size; transform-style: preserve-3d; }
+.folio { position: relative; width: 100%; margin: 0 auto; container-type: inline-size; perspective: 1400px; }
 
 /* Every section uses the same tactile, configurable sheet. */
 .paper-card { position: relative; isolation: isolate; background: var(--paper); color: var(--ink); padding: 35px 27px; text-align: center; overflow-wrap: anywhere; }
@@ -81,7 +82,7 @@
 .seal-button:hover { filter: brightness(1.025); }
 .seal-button:focus-visible { outline-offset: -8px; border-radius: 20%; }
 .cover-calendar { position: absolute; bottom: 5%; left: 12%; right: 12%; text-align: center; color: var(--gold-light); backface-visibility: hidden; }
-.cover-month { display: block; font: 400 clamp(28px, 9.5cqi, 47px)/1.2 var(--script); white-space: nowrap; }
+.cover-month { display: block; font: 400 clamp(28px, 9.5cqi, 47px)/1.2 var(--script); white-space: nowrap; text-transform: capitalize; }
 .cover-year { display: block; text-align: right; font-size: 13px; margin: -4px 2px 7px 0; }
 .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px 1px; font-size: clamp(11px, 3.7cqi, 17px); line-height: 1.15; }
 .calendar-weekday { border-bottom: 1px solid var(--gold-edge); padding-bottom: 4px; margin-bottom: 3px; font-size: .8em; font-weight: 600; }

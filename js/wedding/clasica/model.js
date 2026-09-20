@@ -29,7 +29,7 @@ export function validateClasica(data) {
     'attendees','attendeeSingular','attendeePlural','minus','plus','confirm','confirming','deadline',
     'demoNote','confirmedTitle','confirmed','confirmedSingular','confirmedPlural','expired','noPasses',
     'dressTitle','more','less','giftsTitle','footerCredit','loading','error','retry'];
-  if (!copyKeys.every(key => nonEmpty(config.copy[key])) || config.copy.countdownLabels?.length !== 4) {
+  if (!copyKeys.every(key => nonEmpty(config.copy[key])) || !Array.isArray(config.copy.countdownLabels) || config.copy.countdownLabels.length !== 4) {
     throw new Error('Faltan etiquetas de la interfaz.');
   }
   if (!['countdown','family','dressCode','gifts','story'].every(key => typeof config.sections?.[key] === 'boolean')) {

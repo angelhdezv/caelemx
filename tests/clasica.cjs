@@ -42,6 +42,8 @@ const clone = data => JSON.parse(JSON.stringify(data));
   assert.throws(() => validateClasica(unsafeMap), /Enlace/);
   const incomplete = clone(data); delete incomplete.presentation.clasica.copy.maps;
   assert.throws(() => validateClasica(incomplete), /etiquetas/);
+  const wrongLabels = clone(data); wrongLabels.presentation.clasica.copy.countdownLabels = 'test';
+  assert.throws(() => validateClasica(wrongLabels), /etiquetas/);
   const noFamily = clone(data); noFamily.presentation.clasica.sections.family = false;
   delete noFamily.presentation.clasica.family; assert.doesNotThrow(() => validateClasica(noFamily));
   const november = calendarFor('2026-11-21T18:00:00Z', 'es-MX', 'America/Mexico_City');

@@ -57,6 +57,10 @@ async function revealForScreenshot(page) {
       assert.equal(await page.locator('#letter').getAttribute('inert'), '');
       await page.screenshot({ path: path.join(out, `${name}-closed.png`), fullPage: true });
       await page.getByRole('button', { name: source.presentation.clasica.copy.openAccessible, exact: true }).click();
+      if (name === 'mobile') {
+        await page.waitForTimeout(750);
+        await page.screenshot({ path: path.join(out, 'mobile-opening.png'), fullPage: true });
+      }
       await page.locator('.folio[data-state="open"]').waitFor();
       await assertFits(page);
       assert.ok(await page.locator('#passes').evaluate(el => el.previousElementSibling.classList.contains('locations')));
