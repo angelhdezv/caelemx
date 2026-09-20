@@ -1,0 +1,11 @@
+{
+  "name": "caelemx",
+  "version": "0.3.0",
+  "private": true,
+  "description": "Catálogo estático de invitaciones de Caele.mx; herramientas de desarrollo y QA.",
+  "scripts": {
+    "test": "node --experimental-vm-modules tests/bordado.cjs && node --experimental-vm-modules tests/clasica.cjs",
+    "test:browser": "node tests/clasica.browser.cjs"
+  },
+  "devDependencies": { "playwright": "1.63.0" }
+}

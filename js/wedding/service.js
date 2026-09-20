@@ -5,7 +5,8 @@ const sources = Object.freeze({
  minimalista: '/data/invitations/minimalista.json',
  editorial: '/data/invitations/editorial.json',
  solsticio: '/data/invitations/solsticio.json',
- bordado: '/data/invitations/bordado.json'
+ bordado: '/data/invitations/bordado.json',
+ clasica: '/data/invitations/clasica.json'
 });
 export async function getInvitation(template, { source, fetchImpl = globalThis.fetch } = {}) {
  if (!Object.hasOwn(sources, template)) throw new Error('Plantilla no compatible.');

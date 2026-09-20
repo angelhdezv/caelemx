@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#193426">
+  <meta name="robots" content="noindex,follow">
+  <meta name="description" content="Clásica: una invitación de boda con textura de papel, lacre y detalles dorados. Caele.mx.">
+  <title>Clásica · Invitación de boda | Caele.mx</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/assets/fonts/clasica/great-vibes.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="/assets/fonts/clasica/cormorant-regular.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/clasica.css">
+  <link rel="stylesheet" href="/css/invitation-footer.css">
+  <link rel="stylesheet" href="/css/invitation-preview.css">
+  <script type="module" src="/js/wedding/clasica/app.js"></script>
+</head>
+<body class="classic-preview" data-template="clasica" data-source="/data/invitations/clasica.json">
+  <header class="invitation-preview-header">
+    <a class="invitation-preview-brand" href="/" aria-label="Caele.mx, inicio"><img src="/assets/branding/logo.svg" alt="Caele.mx" width="110" height="40"></a>
+    <nav class="invitation-preview-breadcrumbs" aria-label="Ruta de navegación"><a href="/catalogo/">Catálogo</a><span aria-hidden="true">/</span><a href="/catalogo/boda/">Boda</a><span aria-hidden="true">/</span><span aria-current="page">Clásica</span></nav>
+  </header>
+  <nav class="invitation-preview-actions" aria-label="Opciones de la invitación">
+    <a class="invitation-preview-back" href="/catalogo/boda/"><span aria-hidden="true">←</span><span>Volver a los diseños</span></a>
+    <a class="invitation-preview-interest" href="mailto:contacto@caele.mx?subject=Quiero%20la%20invitaci%C3%B3n%20Cl%C3%A1sica"><span>Quiero esta invitación</span></a>
+  </nav>
+  <main id="invitation" class="clasica" aria-busy="true">
+    <p class="loading" role="status">Preparando tu invitación…</p>
+    <noscript>Activa JavaScript para abrir la invitación y consultar los detalles.</noscript>
+  </main>
+  <footer id="brand-footer" class="invitation-footer"></footer>
+</body>
+</html>

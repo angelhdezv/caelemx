@@ -1,6 +1,6 @@
 # Invitaciones de boda: datos y replicación
 
-Las cuatro plantillas son HTML/CSS/JS estático y cargan sus datos con `fetch`. Servir desde la raíz por HTTP (por ejemplo `python3 -m http.server 8000`); no requieren build ni backend.
+Las cinco plantillas son HTML/CSS/JS estático y cargan sus datos con `fetch`. Servir desde la raíz por HTTP (por ejemplo `python3 -m http.server 8000`); no requieren build ni backend.
 
 ## Archivos de contenido
 
@@ -10,6 +10,7 @@ Las cuatro plantillas son HTML/CSS/JS estático y cargan sus datos con `fetch`. 
 | Editorial | `data/invitations/editorial.json` |
 | Solsticio | `data/invitations/solsticio.json` |
 | Bordado | `data/invitations/bordado.json` |
+| Clásica | `data/invitations/clasica.json` |
 
 Cada archivo contiene un evento completo e independiente. Ninguno hereda nombres, fotos o pases de otra demo. `js/wedding/service.js` es el único cargador; `model.js` valida el contrato antes de renderizar. Un JSON inexistente o inválido produce un error, sin reemplazarlo silenciosamente por otro evento.
 
@@ -44,7 +45,7 @@ Conservar los demás atributos del `body`, en particular `class` y `data-templat
 | `rsvp` | Fecha límite UTC y modo `demo` |
 | `presentation` | Frases y decoración propias del estilo; conservar al copiar el JSON de la plantilla |
 
-Todos los horarios usan ISO 8601 UTC con sufijo `Z`, por ejemplo `2027-11-20T23:00:00Z`. La portada, cada momento del itinerario y el plazo de RSVP se formatean con la zona del dispositivo. El contador resta instantes UTC y se detiene en cero. El itinerario se muestra en el orden del arreglo; las cuatro plantillas admiten múltiples lugares.
+Todos los horarios usan ISO 8601 UTC con sufijo `Z`, por ejemplo `2027-11-20T23:00:00Z`. La portada, cada momento del itinerario y el plazo de RSVP se formatean con la zona del dispositivo. El contador resta instantes UTC y se detiene en cero. El itinerario se muestra en el orden del arreglo; las cinco plantillas admiten múltiples lugares.
 
 Los textos de interfaz (por ejemplo «Confirmar asistencia» o «Ver ubicación») y las animaciones pertenecen al código de la plantilla. Los datos y frases del cliente están en el JSON.
 
@@ -57,3 +58,7 @@ Los textos de interfaz (por ejemplo «Confirmar asistencia» o «Ver ubicación�
 `node --experimental-vm-modules tests/bordado.cjs` comprueba las cuatro fuentes, carga de una fuente de cliente, independencia entre eventos, UTC, horarios, pases, archivos de imágenes y sintaxis de módulos.
 
 Las fotos, direcciones y mesas de regalos actuales son de muestra. Revisar los recursos del cliente antes de publicar. El footer y la navegación de catálogo son compartidos por las cuatro plantillas. La revisión visual en navegador queda fuera de esta sesión, según la preferencia del usuario.
+
+## Clásica (v0.3.0)
+
+Clásica extiende el contrato con tema, familias, etiquetas y elementos PNG configurables. Ver [clasica.md](clasica.md) para replicación y pruebas visuales. Su encabezado y footer adaptan los mismos enlaces de catálogo y crédito a la papelería clásica.

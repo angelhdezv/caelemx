@@ -17,3 +17,18 @@
 .preview-bordado p{font-style:italic}
 .preview-bordado:after{inset:20px 24px 120px auto;width:1px;border:0;border-left:2px dashed #d1a65a;box-shadow:none}
 .preview-bordado .eyebrow{color:#ead6af}
+
+@font-face{font-family:'Classic Preview Script';src:url('/assets/fonts/clasica/great-vibes.woff') format('woff');font-display:swap}
+.preview-clasica{--classic-primary:#315b46;--classic-background:#1c3428;--classic-paper:#fbf5e9;--classic-gold:#9b7336;--classic-gold-light:#e2c782;--classic-texture:url('/assets/wedding/clasica/paper-grain.png');background:var(--classic-background);color:var(--classic-gold-light);padding:25px 30px}
+.preview-clasica:after{display:none}
+.classic-mini{display:block;position:relative;width:min(240px,100%);height:335px;transform:rotate(-3deg)}
+.classic-mini-paper{position:absolute;inset:7px 0 7px 10px;border:6px solid var(--classic-gold);background:var(--classic-paper);color:var(--classic-gold);display:flex;flex-direction:column;justify-content:space-evenly;padding:30px 13px;outline:7px solid var(--classic-primary);box-shadow:5px 8px 20px #0005}
+.classic-mini-paper strong{font:400 34px/1.1 'Classic Preview Script',cursive}
+.classic-mini-paper>span{font:400 15px/1.4 Georgia,serif}
+.classic-mini-paper .classic-mini-date{font-size:25px}
+.classic-mini-flap{position:absolute;inset:0 auto 0 0;width:64%;background:var(--classic-primary);box-shadow:5px 0 9px #0004;display:block}
+.classic-mini-flap:before{content:'';position:absolute;inset:0;background:var(--classic-texture) center/230px;mix-blend-mode:soft-light;opacity:.6}
+.classic-mini-flap:after{content:'';position:absolute;top:45%;left:0;width:156%;height:2px;background:var(--classic-gold-light)}
+.classic-mini-flap img{position:absolute;width:91%;height:auto;top:-13px;left:0;z-index:1}
+.classic-mini-flap>span{position:absolute;bottom:35px;inset-inline:10px;font:400 29px/1.2 'Classic Preview Script',cursive;text-transform:capitalize}
+.classic-mini-label{font:400 13px/1.4 Georgia,serif;letter-spacing:.2em;text-transform:uppercase;margin-top:24px}

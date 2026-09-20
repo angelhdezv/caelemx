@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "id": "clasica-demo",
+  "locale": "es-MX",
+  "branding": {
+    "name": "Caele.mx",
+    "logo": "/assets/branding/logo.svg",
+    "url": "/",
+    "favicon": "/favicon.svg",
+    "tagline": "Invitaciones digitales para momentos especiales.",
+    "contactEmail": "contacto@caele.mx"
+  },
+  "event": {
+    "type": "wedding",
+    "headline": "¡Nos casamos!",
+    "couple": [
+      {
+        "name": "Valeria"
+      },
+      {
+        "name": "Mateo"
+      }
+    ],
+    "quote": "Con la bendición de nuestras familias,\nqueremos compartir contigo\nel comienzo de nuestra historia.",
+    "startsAt": "2027-05-22T19:30:00Z",
+    "timeZone": "America/Mexico_City",
+    "schedule": [
+      {
+        "id": "ceremony",
+        "label": "Nuestro sí, para siempre",
+        "title": "La ceremonia",
+        "startsAt": "2027-05-22T19:30:00Z",
+        "venue": {
+          "name": "Capilla de Villa Aurora",
+          "address": "Jardín de los Olivos · Lugar ficticio para esta demostración",
+          "mapsUrl": "https://www.google.com/maps/"
+        }
+      }
+    ]
+  },
+  "story": {
+    "label": "Una promesa",
+    "title": "Para toda la vida",
+    "text": "Qué alegría encontrarnos en esta vida.\nQué fortuna poder elegirnos cada día."
+  },
+  "media": {
+    "cover": {
+      "src": "/assets/wedding/clasica/seal-flowers.png",
+      "alt": "Flores secas de nube y sello de lacre dorado con una rama de olivo"
+    },
+    "gallery": []
+  },
+  "dressCode": {
+    "title": "Formal",
+    "guidelines": [
+      "Vestido largo o midi.",
+      "Traje y camisa; corbata opcional."
+    ],
+    "note": "Reservamos el blanco para la novia.",
+    "illustration": {
+      "src": "/assets/wedding/clasica/rings.png",
+      "alt": "Alianzas con ramas de olivo"
+    }
+  },
+  "gifts": {
+    "message": "Tu compañía es nuestro mejor regalo.\nSi deseas tener un detalle con nosotros:",
+    "registries": [
+      {
+        "id": "liverpool",
+        "label": "Liverpool",
+        "url": "https://mesaderegalos.liverpool.com.mx/"
+      }
+    ]
+  },
+  "invitation": {
+    "id": "clasica-familia-demo",
+    "guestName": "Familia Robles",
+    "maxPasses": 2
+  },
+  "rsvp": {
+    "mode": "demo",
+    "deadlineAt": "2027-05-15T23:59:00Z"
+  },
+  "presentation": {
+    "clasica": {
+      "theme": {
+        "primary": "#315b46",
+        "paper": "#fbf5e9",
+        "ink": "#51402a",
+        "gold": "#9b7336",
+        "goldLight": "#e2c782"
+      },
+      "assets": {
+        "sealFlowers": "/assets/wedding/clasica/seal-flowers.png",
+        "corner": "/assets/wedding/clasica/corner.png",
+        "rings": "/assets/wedding/clasica/rings.png",
+        "paper": "/assets/wedding/clasica/paper-grain.png"
+      },
+      "sections": {
+        "countdown": true,
+        "family": true,
+        "dressCode": true,
+        "gifts": true,
+        "story": true
+      },
+      "family": {
+        "title": "Con el amor de nuestras familias",
+        "parentsLabel": "Nuestros padres",
+        "parents": [
+          {
+            "label": "De la novia",
+            "names": [
+              "Elena Solís",
+              "Andrés Mendoza"
+            ]
+          },
+          {
+            "label": "Del novio",
+            "names": [
+              "Clara Montes",
+              "Gabriel Duarte"
+            ]
+          }
+        ],
+        "sponsorsLabel": "Nuestros padrinos",
+        "sponsors": [
+          "Lucía Salcedo",
+          "Tomás Beltrán"
+        ]
+      },
+      "copy": {
+        "templateName": "Clásica",
+        "greeting": "Una invitación para ti",
+        "open": "Toca el sello para abrir",
+        "openAccessible": "Abrir la invitación",
+        "opening": "Abriendo tu invitación…",
+        "reopen": "Volver a abrir la invitación",
+        "saveTheDate": "Reserva la fecha",
+        "familyIntro": "Junto a nuestros padres y padrinos",
+        "celebrate": "Celebremos este día tan especial",
+        "homeAccessible": "{brand}, inicio",
+        "breadcrumbsLabel": "Ruta de navegación",
+        "catalogLabel": "Catálogo",
+        "categoryLabel": "Boda",
+        "menu": "Opciones de la invitación",
+        "back": "Volver a los diseños",
+        "interest": "Quiero esta invitación",
+        "emailSubject": "Quiero la invitación Clásica",
+        "skip": "Ir a los detalles",
+        "maps": "Ver ubicación",
+        "localTime": "Horario en tu zona",
+        "countdownTitle": "Cada vez falta menos",
+        "countdownLabels": [
+          "Días",
+          "Horas",
+          "Minutos",
+          "Segundos"
+        ],
+        "countdownComplete": "Llegó el día de nuestro sí",
+        "passesTitle": "Tus pases",
+        "reserved": "Hemos reservado para ti",
+        "passSingular": "lugar",
+        "passPlural": "lugares",
+        "passNote": "Nos encantará compartir este día contigo.",
+        "attendees": "¿Cuántos nos acompañarán?",
+        "attendeeSingular": "persona",
+        "attendeePlural": "personas",
+        "minus": "Quitar un asistente",
+        "plus": "Agregar un asistente",
+        "confirm": "Confirmar asistencia",
+        "confirming": "Confirmando…",
+        "deadline": "Confírmanos antes del {date}",
+        "demoNote": "Estás viendo una invitación de muestra. La confirmación es una demostración.",
+        "confirmedTitle": "¡Gracias por acompañarnos!",
+        "confirmed": "Demostración: {count} {places}. Tu respuesta no se ha enviado.",
+        "confirmedSingular": "lugar seleccionado",
+        "confirmedPlural": "lugares seleccionados",
+        "expired": "El periodo de confirmación terminó.",
+        "noPasses": "Esta invitación no tiene pases disponibles.",
+        "dressTitle": "Código de vestimenta",
+        "more": "Más información",
+        "less": "Menos información",
+        "giftsTitle": "Mesa de regalos",
+        "loading": "Preparando tu invitación…",
+        "error": "No pudimos abrir esta invitación. Inténtalo de nuevo.",
+        "retry": "Volver a intentar"
+      }
+    }
+  }
+}
