@@ -7,7 +7,7 @@
     "logo": "/assets/branding/logo.svg",
     "url": "/",
     "favicon": "/favicon.svg",
-    "tagline": "Invitaciones para momentos que se quedan.",
+    "tagline": "Invitaciones digitales para momentos especiales.",
     "contactEmail": "contacto@caele.mx"
   },
   "event": {
@@ -15,25 +15,25 @@
     "headline": "¡Nos casamos!",
     "couple": [
       {
-        "name": "Sandra"
+        "name": "Valeria"
       },
       {
-        "name": "Sergio"
+        "name": "Mateo"
       }
     ],
     "quote": "Con la bendición de nuestras familias,\nqueremos compartir contigo\nel comienzo de nuestra historia.",
-    "startsAt": "2026-11-21T18:00:00Z",
+    "startsAt": "2027-05-22T19:30:00Z",
     "timeZone": "America/Mexico_City",
     "schedule": [
       {
         "id": "ceremony",
         "label": "Nuestro sí, para siempre",
         "title": "La ceremonia",
-        "startsAt": "2026-11-21T18:00:00Z",
+        "startsAt": "2027-05-22T19:30:00Z",
         "venue": {
-          "name": "Parroquia de San Cristóbal Mártir",
-          "address": "Coyotepec, Estado de México",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Parroquia+de+San+Cristobal+Martir+Coyotepec"
+          "name": "Capilla de Villa Aurora",
+          "address": "Jardín de los Olivos · Lugar ficticio para esta demostración",
+          "mapsUrl": "https://www.google.com/maps/"
         }
       }
     ]
@@ -74,12 +74,12 @@
   },
   "invitation": {
     "id": "clasica-familia-demo",
-    "guestName": "Familia invitada",
+    "guestName": "Familia Robles",
     "maxPasses": 2
   },
   "rsvp": {
     "mode": "demo",
-    "deadlineAt": "2026-11-14T23:59:00Z"
+    "deadlineAt": "2027-05-15T23:59:00Z"
   },
   "presentation": {
     "clasica": {
@@ -110,22 +110,22 @@
           {
             "label": "De la novia",
             "names": [
-              "María Graciela Gómez",
-              "Antonio Rivera"
+              "Elena Solís",
+              "Andrés Mendoza"
             ]
           },
           {
             "label": "Del novio",
             "names": [
-              "Diana María Baltazar",
-              "Ismael Ramírez"
+              "Clara Montes",
+              "Gabriel Duarte"
             ]
           }
         ],
         "sponsorsLabel": "Nuestros padrinos",
         "sponsors": [
-          "María Patricia Romero",
-          "Francisco Ramírez"
+          "Lucía Salcedo",
+          "Tomás Beltrán"
         ]
       },
       "copy": {
@@ -138,6 +138,10 @@
         "saveTheDate": "Reserva la fecha",
         "familyIntro": "Junto a nuestros padres y padrinos",
         "celebrate": "Celebremos este día tan especial",
+        "homeAccessible": "{brand}, inicio",
+        "breadcrumbsLabel": "Ruta de navegación",
+        "catalogLabel": "Catálogo",
+        "categoryLabel": "Boda",
         "menu": "Opciones de la invitación",
         "back": "Volver a los diseños",
         "interest": "Quiero esta invitación",
@@ -177,7 +181,6 @@
         "more": "Más información",
         "less": "Menos información",
         "giftsTitle": "Mesa de regalos",
-        "footerCredit": "Developed by",
         "loading": "Preparando tu invitación…",
         "error": "No pudimos abrir esta invitación. Inténtalo de nuevo.",
         "retry": "Volver a intentar"

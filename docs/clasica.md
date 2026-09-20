@@ -3,6 +3,9 @@
 Ruta: `/catalogo/boda/clasica/`. Invitación estática con carpeta de apertura lateral,
 papel marfil, lacre, flores secas y tarjetas ornamentadas. No necesita build ni backend.
 
+La muestra usa datos ficticios: Valeria y Mateo, 22 de mayo de 2027, familias y lugar
+inventados. El enlace de ubicación abre el mapa general, sin apuntar al evento de referencia.
+
 ## Personalización
 
 Todo el contenido del evento vive en `data/invitations/clasica.json`. Para otro cliente,
@@ -39,12 +42,18 @@ después de ese bloque. Los textos se insertan como texto, nunca como HTML del J
 
 ## Componentes y comportamiento
 
-- `app.js`: carga, tema, metadatos, contador y ciclo de vida.
+- `app.js`: carga, tema, metadatos, navegación del catálogo, contador y ciclo de vida.
 - `model.js`: validación específica, paleta derivada y calendario puro.
-- `view.js` y `dom.js`: componentes de tarjetas, carpeta, encabezado y detalles.
+- `view.js` y `dom.js`: componentes de tarjetas, carpeta y detalles.
 - `motion.js`: estados `closed → opening → open`, cordón, solapa, repetición y movimiento reducido.
 - `rsvp.js`: selector accesible, límites y confirmación mediante el adaptador existente.
 - `catalog-preview.js`: miniatura que usa el mismo JSON y los mismos PNG.
+
+El header y las acciones usan la estructura y `invitation-preview.css` de las otras
+cuatro demos. El footer usa `js/wedding/footer.js` y `invitation-footer.css`. Ambos
+quedan fuera de `#invitation`: están disponibles con la carpeta cerrada o abierta
+y conservan los colores y tipografía de Caele.mx cuando cambia la paleta del JSON.
+Los textos de navegación se personalizan desde `copy` y la identidad desde `branding`.
 
 La solapa se abre con el sello, con el texto de apertura o con teclado. Los detalles
 permanecen ocultos e inertes hasta la apertura. El foco pasa a la invitación. El enlace
@@ -88,7 +97,9 @@ estáticos directamente. La prueba de navegador inicia y cierra su propio servid
 El flujo `.github/workflows/clasica.yml` ejecuta estas comprobaciones y conserva
 capturas de 320, 390 y 1440 píxeles, estado cerrado, abierto, pases y cambio de paleta
 en el artefacto `clasica-visual-qa`. También comprueba teclado, reapertura, movimiento
-reducido, JSON faltante, texto escapado, cero pases y plazo vencido.
+reducido, JSON faltante, texto escapado, cero pases y plazo vencido. Compara el header
+y footer con las otras cuatro demos y verifica que cambiar la paleta no afecte la
+navegación, que los controles sigan disponibles y que se pueda volver al catálogo.
 
-Los mensajes de carga inicial y de error cuando el JSON no existe son el único texto
-de contingencia en el HTML/código: una fuente que no pudo leerse no puede aportar esas etiquetas.
+La navegación estática y los mensajes de carga y error sirven de contingencia si el
+JSON no existe; al cargar, los datos del JSON actualizan la navegación y la invitación.

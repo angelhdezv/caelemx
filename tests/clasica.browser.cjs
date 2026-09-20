@@ -34,6 +34,35 @@ async function revealForScreenshot(page) {
   await page.waitForTimeout(800);
 }
 
+async function previewStyles(page) {
+  return page.evaluate(() => {
+    const selectors = ['.invitation-preview-header', '.invitation-preview-brand img',
+      '.invitation-preview-breadcrumbs a', '.invitation-preview-actions', '.invitation-preview-back',
+      '.invitation-preview-interest', '.invitation-footer', '.invitation-footer__logo',
+      '.invitation-footer__tagline', '.invitation-footer__copyright'];
+    const properties = ['backgroundColor', 'color', 'fontFamily', 'fontSize', 'fontWeight', 'lineHeight',
+      'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'borderTopWidth', 'borderBottomWidth'];
+    return Object.fromEntries(selectors.map(selector => {
+      const style = getComputedStyle(document.querySelector(selector));
+      return [selector, Object.fromEntries(properties.map(property => [property, style[property]]))];
+    }));
+  });
+}
+
+async function assertPreview(page) {
+  for (const selector of ['.invitation-preview-header', '.invitation-preview-actions', '#brand-footer']) {
+    assert.ok(await page.locator(selector).isVisible(), `${selector} must remain visible`);
+    assert.ok(await page.locator(selector).evaluate(el => el.parentElement === document.body));
+  }
+  assert.deepEqual(await page.locator('.invitation-preview-breadcrumbs a').evaluateAll(links =>
+    links.map(link => link.getAttribute('href'))), ['/catalogo/', '/catalogo/boda/']);
+  assert.equal(await page.locator('.invitation-preview-breadcrumbs [aria-current]').innerText(), 'Clásica');
+  assert.equal(await page.locator('.invitation-preview-back').getAttribute('href'), '/catalogo/boda/');
+  assert.equal(await page.locator('.invitation-preview-interest').getAttribute('href'),
+    `mailto:${source.branding.contactEmail}?subject=${encodeURIComponent(source.presentation.clasica.copy.emailSubject)}`);
+  assert.equal(await page.locator('#brand-footer img').getAttribute('alt'), source.branding.name);
+}
+
 (async () => {
   fs.mkdirSync(out, { recursive: true });
   server = spawn('python3', ['-m', 'http.server', '8031', '--bind', '127.0.0.1'], { cwd: base, stdio: 'ignore' });
@@ -54,6 +83,19 @@ async function revealForScreenshot(page) {
     const page = await openPage(context);
     try {
       await assertFits(page);
+      await assertPreview(page);
+      const sharedStyles = await previewStyles(page);
+      const comparisons = await browser.newContext({ viewport });
+      try {
+        for (const template of ['bordado', 'editorial', 'minimalista', 'solsticio']) {
+          const reference = await comparisons.newPage();
+          await reference.goto(url.replace('clasica/', `${template}/`), { waitUntil: 'domcontentloaded' });
+          await reference.locator('#brand-footer img').waitFor();
+          await reference.evaluate(() => document.fonts.ready);
+          assert.deepEqual(sharedStyles, await previewStyles(reference), `Catalog navigation differs from ${template} at ${viewport.width}px`);
+          await reference.close();
+        }
+      } finally { await comparisons.close(); }
       assert.equal(await page.locator('#letter').getAttribute('inert'), '');
       await page.screenshot({ path: path.join(out, `${name}-closed.png`), fullPage: true });
       await page.getByRole('button', { name: source.presentation.clasica.copy.openAccessible, exact: true }).click();
@@ -63,6 +105,7 @@ async function revealForScreenshot(page) {
       }
       await page.locator('.folio[data-state="open"]').waitFor();
       await assertFits(page);
+      await assertPreview(page);
       assert.ok(await page.locator('#passes').evaluate(el => el.previousElementSibling.classList.contains('locations')));
       assert.equal(await page.locator('#attendees').inputValue(), '2');
       assert.ok(await page.getByRole('button', { name: 'Agregar un asistente' }).isDisabled());
@@ -81,6 +124,9 @@ async function revealForScreenshot(page) {
       await page.locator('.open-invitation').focus();
       await page.keyboard.press('Enter');
       await page.locator('.folio[data-state="open"]').waitFor();
+      await page.locator('.invitation-preview-back').click();
+      assert.equal(new URL(page.url()).pathname, '/catalogo/boda/');
+      await page.locator('[data-classic-couple]').filter({ hasText: source.event.couple.map(person => person.name).join(' & ') }).waitFor();
       assert.deepEqual(errors, []); assert.deepEqual(missing, []);
       report.push({ name, viewport, status: 'passed', errors, missing });
     } catch (error) {
@@ -97,7 +143,13 @@ async function revealForScreenshot(page) {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 }, timezoneId: 'Asia/Tokyo', reducedMotion: 'reduce' });
   await context.route('**/data/invitations/clasica.json', route => route.fulfill({ json: alternate }));
   const page = await openPage(context);
-  assert.equal(await page.locator('body').evaluate(el => getComputedStyle(el).getPropertyValue('--primary').trim()), '#603649');
+  assert.equal(await page.locator('#invitation').evaluate(el => getComputedStyle(el).getPropertyValue('--primary').trim()), '#603649');
+  await assertPreview(page);
+  const defaultContext = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  try {
+    const defaultPage = await openPage(defaultContext);
+    assert.deepEqual(await previewStyles(page), await previewStyles(defaultPage), 'The invitation palette must not change catalog navigation');
+  } finally { await defaultContext.close(); }
   assert.equal(await page.locator('.letter-quote img').count(), 0);
   await page.screenshot({ path: path.join(out, 'mobile-alternate-color.png'), fullPage: true });
   await page.locator('.seal-button').click();
@@ -124,8 +176,10 @@ async function revealForScreenshot(page) {
   const failurePage = await failureContext.newPage(); await failurePage.goto(url);
   await failurePage.getByRole('button', { name: 'Volver a intentar' }).waitFor();
   assert.equal(await failurePage.locator('#invitation').getAttribute('aria-busy'), 'false');
+  await failurePage.locator('.invitation-preview-back').click();
+  assert.equal(new URL(failurePage.url()).pathname, '/catalogo/boda/');
   await failureContext.close(); report.push({ name: 'Missing JSON fallback', status: 'passed' });
-  console.log('PASS: three viewport sizes, opening/replay/keyboard, RSVP, JSON themes, reduced motion, optional sections and error states.');
+  console.log('PASS: shared header/footer across all five demos at three viewport sizes, navigation, theme isolation, opening/replay/keyboard, RSVP, JSON customization and error states.');
 })().catch(error => { console.error(error); process.exitCode = 1; }).finally(async () => {
   fs.writeFileSync(path.join(out, 'report.json'), JSON.stringify(report, null, 2));
   await browser?.close(); server?.kill();

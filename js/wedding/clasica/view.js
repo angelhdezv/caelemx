@@ -6,22 +6,6 @@ const timeText = (value, locale) => new Intl.DateTimeFormat(locale,
 const dateText = (value, locale) => new Intl.DateTimeFormat(locale,
   { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(value));
 
-function renderHeader(data, copy) {
-  const header = el('header', 'classic-header');
-  header.append(link('classic-brand', data.branding.name, data.branding.url));
-  const menu = el('details', 'classic-menu');
-  const trigger = el('summary', 'menu-trigger');
-  trigger.setAttribute('aria-label', copy.menu);
-  for (let i = 0; i < 3; i++) { const line = el('span'); line.setAttribute('aria-hidden', 'true'); trigger.append(line); }
-  const nav = el('nav', 'menu-panel');
-  nav.setAttribute('aria-label', copy.menu);
-  const interest = el('a', '', copy.interest);
-  interest.href = `mailto:${data.branding.contactEmail}?subject=${encodeURIComponent(copy.emailSubject)}`;
-  nav.append(link('', copy.back, '/catalogo/boda/'), interest);
-  menu.append(trigger, nav); header.append(menu);
-  return header;
-}
-
 function renderLetter(data, config, calendar) {
   const card = paperCard('letter', { corners: true, tag: 'article' });
   card.id = 'letter'; card.tabIndex = -1;
@@ -192,14 +176,7 @@ export function renderInvitation(root, data) {
     details.append(story);
   }
   const replay = button('replay-invitation', copy.reopen); details.append(replay);
-  const footer = el('footer', 'classic-footer');
-  footer.append(el('span', '', copy.footerCredit + ' '), link('', data.branding.name, data.branding.url));
-  const actions = el('nav', 'catalog-actions'); actions.setAttribute('aria-label', copy.menu);
-  const interest = el('a', '', copy.interest);
-  interest.href = `mailto:${data.branding.contactEmail}?subject=${encodeURIComponent(copy.emailSubject)}`;
-  actions.append(link('', copy.back, '/catalogo/boda/'), interest);
-  details.append(actions, footer);
-  shell.append(skip, renderHeader(data, copy), greeting, stage, open, openStatus, details);
+  shell.append(skip, greeting, stage, open, openStatus, details);
   root.replaceChildren(shell); root.setAttribute('aria-busy', 'false');
   return { shell, greeting, stage, folio, letter, cover, seal, open, openStatus, details, passes, countdown, replay, skip };
 }

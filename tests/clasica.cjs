@@ -23,7 +23,7 @@ const clone = data => JSON.parse(JSON.stringify(data));
     return { ok: fs.existsSync(file), json: async () => JSON.parse(fs.readFileSync(file, 'utf8')) };
   };
   const data = validateClasica(await getInvitation('clasica', { fetchImpl }));
-  assert.equal(data.event.couple[0].name, 'Sandra');
+  assert.equal(data.event.couple[0].name, 'Valeria');
   const custom = clone(data);
   custom.event.couple = [{ name: 'Ana María' }, { name: 'José Luis' }];
   custom.presentation.clasica.theme.primary = '#623444';

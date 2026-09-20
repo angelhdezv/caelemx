@@ -24,11 +24,12 @@ export function validateClasica(data) {
     throw new Error('Los textos de Clásica están incompletos.');
   }
   const copyKeys = ['templateName','greeting','open','openAccessible','opening','reopen','saveTheDate',
-    'familyIntro','celebrate','menu','back','interest','emailSubject','skip','maps','localTime',
+    'familyIntro','celebrate','homeAccessible','breadcrumbsLabel','catalogLabel','categoryLabel',
+    'menu','back','interest','emailSubject','skip','maps','localTime',
     'countdownTitle','countdownComplete','passesTitle','reserved','passSingular','passPlural','passNote',
     'attendees','attendeeSingular','attendeePlural','minus','plus','confirm','confirming','deadline',
     'demoNote','confirmedTitle','confirmed','confirmedSingular','confirmedPlural','expired','noPasses',
-    'dressTitle','more','less','giftsTitle','footerCredit','loading','error','retry'];
+    'dressTitle','more','less','giftsTitle','loading','error','retry'];
   if (!copyKeys.every(key => nonEmpty(config.copy[key])) || !Array.isArray(config.copy.countdownLabels) || config.copy.countdownLabels.length !== 4) {
     throw new Error('Faltan etiquetas de la interfaz.');
   }
@@ -42,7 +43,7 @@ export function validateClasica(data) {
   // render a button that claims to send a real response.
   if (data.rsvp.mode !== 'demo') throw new Error('Configura un adaptador antes de activar confirmaciones reales.');
   new Intl.DateTimeFormat(data.locale, { timeZone: data.event.timeZone });
-  safeURL(data.branding.url); safeURL(data.branding.favicon);
+  safeURL(data.branding.url); safeURL(data.branding.favicon); safeURL(data.branding.logo);
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.branding.contactEmail)) throw new Error('Correo de contacto inválido.');
   data.event.schedule.forEach(item => safeURL(item.venue.mapsUrl));
   data.gifts.registries.forEach(item => safeURL(item.url));
