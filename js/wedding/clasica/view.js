@@ -23,6 +23,7 @@ function renderLetter(data, config, calendar) {
 
 function renderCalendar(calendar, copy) {
   const block = el('div', 'cover-calendar'); block.setAttribute('aria-hidden', 'true');
+  block.classList.toggle('has-six-weeks', calendar.cells.length === 42);
   block.append(el('span', 'cover-month', calendar.monthName));
   const grid = el('div', 'calendar-grid');
   calendar.weekdays.forEach(day => grid.append(el('span', 'calendar-weekday', day)));
